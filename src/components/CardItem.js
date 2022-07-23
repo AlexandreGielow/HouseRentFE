@@ -1,20 +1,31 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Property from '../Model/Property';
+import './CardItem.css';
 
 function CardItem(props) {
+
   return (
     <>
       <li className='cards__item'>
-        <Link className='cards__item__link' to={props.path}>
-          <figure className='cards__item__pic-wrap' data-category={props.label}>
-            <img
-              className='cards__item__img'
-              alt='Travel Image'
-              src={props.src}
-            />
-          </figure>
-          <div className='cards__item__info'>
-            <h5 className='cards__item__text'>{props.text}</h5>
+        <Link className='cardgeneral' to={props.path}>
+        <div>
+          <img className='image' src={props.image}></img>
+        </div>
+        <div>
+            <ul className='titleGroup'>
+              <li className='title'>{props.type} • </li>
+              <li className='title'>{props.rooms} rooms • </li>
+              <li className='title'>{props.size}m²</li>          
+            </ul>
+          <li className='adress_district'>{props.district}</li>
+          <li className='adress_city'>{props.city}</li>
+          <h5 className='datesh5'>
+            <div className='dates'>{props.startDate} </div>
+            <div className='seta'></div>
+            <div className='dates'>{props.endDate} </div>          
+          </h5>
+          <h3 className='value'>R$: {props.value}</h3>
           </div>
         </Link>
       </li>

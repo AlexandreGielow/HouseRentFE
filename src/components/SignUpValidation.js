@@ -8,15 +8,15 @@ const SignUpValidation =(values)=>{
     }
     if(!values.Email){
         errors.Email="Email is required"
-    }//else if(/\S+@\S+\.\S+/.test(values.Email)){
-       // errors.Email="Invalid Email"
-    //}
+    }else if(/\S+@\S+\.\S+/.test(values.Email)){
+        errors.Email="Invalid Email"
+    }
     if(!values.Password){
         errors.Password="Password is required"
     }
     if(!values.ConfirmPassword){
         errors.ConfirmPassword="Confirm Password is required"
-    }else if(values.Password!=values.ConfirmPassword){
+    }else if(values.Password!==values.ConfirmPassword){
         errors.ConfirmPassword="Password and Confirmation does not match"
     }
     return errors

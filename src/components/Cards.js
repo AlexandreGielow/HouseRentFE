@@ -1,50 +1,91 @@
 import React from 'react';
 import './Cards.css';
 import CardItem from './CardItem';
+import Property from '../Model/Property';
+import './Button.css';
 
-function Cards() {
-  return (
-    <div className='cards'>
-      <h1>Check out these EPIC Destinations!</h1>
-      <div className='cards__container'>
-        <div className='cards__wrapper'>
-          <ul className='cards__items'>
-            <CardItem
-              src='images/img-9.jpg'
-              text='Explore the hidden waterfall deep inside the Amazon Jungle'
-              label='Adventure'
-              path='/services'
-            />
-            <CardItem
-              src='images/img-2.jpg'
-              text='Travel through the Islands of Bali in a Private Cruise'
-              label='Luxury'
-              path='/services'
-            />
-          </ul>
-          <ul className='cards__items'>
-            <CardItem
-              src='images/img-3.jpg'
-              text='Set Sail in the Atlantic Ocean visiting Uncharted Waters'
-              label='Mystery'
-              path='/services'
-            />
-            <CardItem
-              src='images/img-4.jpg'
-              text='Experience Football on Top of the Himilayan Mountains'
-              label='Adventure'
-              path='/products'
-            />
-            <CardItem
-              src='images/img-8.jpg'
-              text='Ride through the Sahara Desert on a guided camel tour'
-              label='Adrenaline'
-              path='/sign-up'
-            />
-          </ul>
-        </div>
+const Properties = () => {
+
+var escambau = []   
+var kaka = "";
+
+
+for(var i=0; i < 3; i++){
+
+  kaka = 
+  <div className='cards__container'>
+  <div className='cards__wrapper'>          
+    <ul className='cards__items'>
+      <CardItem
+        name='House'
+        path='/services'
+        type='House'
+        rooms='4'
+        size='120'
+        city='Gaspar'
+        district='Centro'
+        value='1800'
+        startDate='01/09/2022'
+        endDate='until further notice'
+        image='../images/casa.png'
+      />            
+      </ul>
       </div>
     </div>
+
+    escambau.push(kaka);
+}
+  return(escambau);
+};
+
+
+const  RetrieveProperties = async ()=> {  
+  const requestOptions = {
+    method: 'GET',            
+    json: true,
+    headers: new Headers({
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
+        'Access-Control-Allow-Methods': 'PUT, GET, POST, DELETE, OPTIONS',
+        'Content-Type': 'application/json'
+    }),
+  };        
+  const response = await  fetch('https://localhost:44307/api/Property', requestOptions);    
+
+}
+
+
+function Cards(props) {
+
+  return (
+    <div className='cards'>
+      <h1>Check out our best homes!</h1>
+      <div className='cards__container'>
+        <div className='cards__wrapper'>          
+          <ul className='cards__items'>
+            <CardItem
+              name='Apartment'
+              path='/services'
+              type='Apartment'
+              rooms='2'
+              size='55'
+              city='Blumenau'
+              district='Garcia'
+              value='1400'
+              startDate='01/09/2022'
+              endDate='01/19/2023'
+              image='../images/apartamento.png'
+            />            
+            </ul>
+        </div>
+      </div>
+      <Properties/>
+      <div>
+        <button className="btn--primary" onClick={RetrieveProperties}>teste</button>
+      </div>
+      
+    </div>
+    
   );
 }
 
