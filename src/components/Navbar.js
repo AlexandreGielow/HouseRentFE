@@ -1,39 +1,38 @@
-import React, { useState, useEffect } from 'react';
-import { Button } from './Button';
-import { Link } from 'react-router-dom';
-import './Navbar.css';
+import React, { useState, useEffect } from 'react'
+import { Button } from './Button'
+import { Link } from 'react-router-dom'
+import './Navbar.css'
 
+function Navbar () {
+  const [click, setClick] = useState(false)
+  const [button, setButton] = useState(true)
 
-function Navbar() {
-    const [click, setClick] = useState(false);
-    const [button, setButton] = useState(true);
+  const handleClick = () => setClick(!click)
+  const closeMobileMenu = () => setClick(false)
 
-    const handleClick = () => setClick(!click);
-    const closeMobileMenu = () => setClick(false);
+  const showButton = () => {
+    if (window.innerWidth <= 960) {
+      setButton(false)
+    } else {
+      setButton(true)
+    }
+  }
+  useEffect(() => {
+    showButton()
+  }, [showButton])
 
-    const showButton = () => {
-        if (window.innerWidth <= 960) {
-            setButton(false);
-        } else {
-            setButton(true);
-        }
-    };
-    useEffect(() => {
-        showButton();
-    }, []);
+  const [elements, setElements] = useState('SignUpForm')
+  function addElements () {
+    setElements([...elements, 'SignUpForm'])
+  }
 
-    const [elements,setElements] = useState("SignUpForm");
-    function addElements(){
-    setElements([...elements, "SignUpForm"])
-}
-
-    window.addEventListener('resize', showButton);
-    return (
+  window.addEventListener('resize', showButton)
+  return (
         <>
             <nav className='navbar'>
                 <div className='navbar-container'>
                     <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
-                        House Rent                       
+                        House Rent
                     </Link>
                     <div className='menu-icon' onClick={handleClick}>
                         <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
@@ -73,7 +72,7 @@ function Navbar() {
                 </div>
             </nav>
         </>
-    );
+  )
 }
 
-export default Navbar;
+export default Navbar

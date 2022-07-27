@@ -1,4 +1,5 @@
-const Person = (id, name, sureName, personType,email) => { 
-    return { id: id, name: name, sureName:sureName,personType:personType,email:email} }
+const Person = (id, name, sureName, personType, email) => {
+  return { id, name, sureName, personType, email }
+}
 
-export default Person;
+export default Person

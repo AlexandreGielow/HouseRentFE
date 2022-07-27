@@ -1,17 +1,14 @@
-import React, {useEffect, useState} from "react";
-import useSubmitForm from "../components/useSubmitForm";
-import '../App.css';
+import React from 'react'
+import useSubmitForm from '../components/useSubmitForm'
+import '../App.css'
 import './SignUpForm.css'
 
-
-
-const SignUpForm =({submitForm}) =>{
-    
-    const{handleChange, handleFormSubmit, values,errors} = useSubmitForm(
-        submitForm
-        );
-    return(
-        <div className="hero-container">   
+const SignUpForm = ({ submitForm }) => {
+  const { handleChange, handleFormSubmit, values, errors } = useSubmitForm(
+    submitForm
+  )
+  return (
+        <div className="hero-container">
             <div className="container">
                 <div className="app-wrapper">
                     <h2 className="title">Create Account</h2>
@@ -45,11 +42,10 @@ const SignUpForm =({submitForm}) =>{
                     <div>
                         <button className="btn--outline" onClick={handleFormSubmit}>Create Account</button>
                     </div>
-
-                </form>            
+                </form>
             </div>
         </div>
-    )
-};
+  )
+}
 
 export default SignUpForm

@@ -1,11 +1,11 @@
-import React from 'react';
-import '../App.css';
-import { Button } from './Button';
-import './HeroSection.css';
+import React from 'react'
+import '../App.css'
+import { Button } from './Button'
+import './HeroSection.css'
 
-function HeroSection() {
-    return (
-        <div className='hero-container'>            
+function HeroSection () {
+  return (
+        <div className='hero-container'>
             <h1>Your new home AWAITS</h1>
             <p>What are you waiting for?</p>
             <div className='hero-btns'>
@@ -26,7 +26,7 @@ function HeroSection() {
                 </Button>
             </div>
         </div>
-    );
+  )
 }
 
-export default HeroSection;
+export default HeroSection

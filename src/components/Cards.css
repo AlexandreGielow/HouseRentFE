@@ -19,7 +19,9 @@
   
   .cards__wrapper {
     position: relative;
-
+    box-sizing: border-box;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgb(214, 214, 214);
   }
   
   .cards__items {
