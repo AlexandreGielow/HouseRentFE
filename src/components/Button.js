@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import './Button.css'
 import { Link } from 'react-router-dom'
 
@@ -11,7 +11,8 @@ export const Button = ({
   type,
   onClick,
   buttonStyle,
-  buttonSize
+  buttonSize,
+  value
 }) => {
   const checkButtonStyle = STYLES.includes(buttonStyle)
     ? buttonStyle
@@ -19,8 +20,20 @@ export const Button = ({
 
   const checkButtonSize = SIZES.includes(buttonSize) ? buttonSize : SIZES[0]
 
+  const [destiny, setDestiny] = useState('')
+
+  const useDestiny = () => {
+    if (!value) {
+      setDestiny('/')
+    } else {
+      setDestiny(value)
+    }
+  }
+  useEffect(() => {
+    useDestiny()
+  }, [useDestiny])
   return (
-        <Link to='/SignUpForm' className='btn-mobile'>
+        <Link to={destiny} className='btn-mobile'>
             <button
                 className={`btn ${checkButtonStyle} ${checkButtonSize}`}
                 onClick={onClick}

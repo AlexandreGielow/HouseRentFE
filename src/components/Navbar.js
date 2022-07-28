@@ -25,6 +25,10 @@ function Navbar () {
   function addElements () {
     setElements([...elements, 'SignUpForm'])
   }
+  const [elements2, setElements2] = useState('LoginForm')
+  function addElements2 () {
+    setElements2([...elements2, 'LoginForm'])
+  }
 
   window.addEventListener('resize', showButton)
   return (
@@ -66,8 +70,11 @@ function Navbar () {
                             </Link>
                         </li>
                     </ul>
+                    {button && <Link to='/LoginForm'>
+                        <Button onClick={addElements2} buttonStyle='btn--outline' value='/LoginForm'>LOGIN</Button>
+                        </Link>}
                     {button && <Link to='/SignUpForm'>
-                        <Button onClick={addElements} buttonStyle='btn--outline'>SIGN UP</Button>
+                        <Button onClick={addElements} buttonStyle='btn--outline' value='/SignUpForm'>SIGN UP</Button>
                         </Link>}
                 </div>
             </nav>

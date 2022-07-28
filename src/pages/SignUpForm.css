@@ -9,13 +9,21 @@
     color: #fff;
 }
 
+.button{
+    display: flex;
+    position: relative; 
+    color: #fff;    
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
 .container{
  background-color: cadetblue;
  color: white; 
- width: 600px;
+ width: 450px;
  margin: auto;
- margin-top: 30px;
+ margin-top: 130px;
  padding: 30px;
  
 }
@@ -27,7 +35,7 @@
 
 .form-wrapper{
     padding-bottom: 10px;
-    width: 200px;
+    width: 300px;
 
 }
 .name{
@@ -60,5 +68,6 @@
     outline: 0;
     background: transparent;
     border-bottom: 1px solid white; 
-    color:  white;    
+    color:  white; 
+    width: 300px;   
 }

@@ -11,7 +11,7 @@ const SignUpForm = ({ submitForm }) => {
         <div className="hero-container">
             <div className="container">
                 <div className="app-wrapper">
-                    <h2 className="title">Create Account</h2>
+                    <h2 className="lable">Create your account!</h2>
                 </div>
                 <form className="form-wrapper">
                     <div className="name">
@@ -39,7 +39,7 @@ const SignUpForm = ({ submitForm }) => {
                         <input className="input" type="password" name="ConfirmPassword"value={values.ConfirmPassword} onChange={handleChange}/>
                         {errors.ConfirmPassword && <p className="error">{errors.ConfirmPassword}</p>}
                     </div>
-                    <div>
+                    <div className='button'>
                         <button className="btn--outline" onClick={handleFormSubmit}>Create Account</button>
                     </div>
                 </form>

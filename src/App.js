@@ -5,6 +5,7 @@ import Home from './pages/Home'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import SignUpForm from './pages/SignUpForm'
 import FetchProperties from './components/FetchProperties'
+import LoginForm from './pages/LoginForm'
 
 function App () {
   return (
@@ -14,6 +15,7 @@ function App () {
                 <Routes>
                     <Route exact path='/' element={<Home/>} />
                     <Route path='/SignUpForm' element={<SignUpForm/>} />
+                    <Route path='/LoginForm' element={<LoginForm/>} />
                     <Route path='./components/SignUpForm' element={<SignUpForm/>} />
                     <Route path='./components/FetchProperties' element={<FetchProperties/>}/>
                 </Routes>
