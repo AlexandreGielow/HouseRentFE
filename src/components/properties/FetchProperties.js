@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import CardItem from './CardItem'
+import CardItem from '../CardItem'
 
 export const FetchProperties = () => {
   const [properties, setProperties] = useState([])

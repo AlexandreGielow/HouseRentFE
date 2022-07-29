@@ -1,6 +1,6 @@
 import React from 'react'
-import useSubmitForm from '../components/useSubmitForm'
-import '../App.css'
+import useSubmitForm from '../../components/LoginRegister/useSubmitForm'
+import '../../App.css'
 import './SignUpForm.css'
 
 const SignUpForm = ({ submitForm }) => {

@@ -1,7 +1,6 @@
 import { useState, useEffect, useCallback } from 'react'
-import SignUpValidation from './SignUpValidation'
 
-const useSubmitForm = (submitForm) => {
+const useLoginForm = (loginForm) => {
   const [values, setValues] = useState({
     Name: '',
     SureName: '',
@@ -19,11 +18,14 @@ const useSubmitForm = (submitForm) => {
   const [errors, setErrors] = useState({})
   const [dataIsCorrect, setDataIsCorrect] = useState(false)
 
-  const SendPerson = async (values) => {
+  const SendLogin = async (values) => {
     const requestOptions = {
       method: 'POST',
       body: JSON.stringify({
-        values
+        Email: values.Email,
+        Name: values.Name,
+        Password: values.Password,
+        SureName: values.SureName
       }),
       json: true,
       headers: new Headers({
@@ -38,17 +40,16 @@ const useSubmitForm = (submitForm) => {
 
   const handleFormSubmit = useCallback((event) => {
     event.preventDefault()
-    setErrors(SignUpValidation(values))
     setDataIsCorrect(true)
-    SendPerson(values)
-  }, [setErrors, setDataIsCorrect, SendPerson, useCallback])
+    SendLogin(values)
+  }, [setErrors, setDataIsCorrect, SendLogin, useCallback])
 
   useEffect(() => {
     if (Object.keys(errors).length === 0 && dataIsCorrect) {
-      submitForm(true)
+      loginForm(true)
     }
   }, [errors])
   return { handleChange, handleFormSubmit, errors, values }
 }
 
-export default useSubmitForm
+export default useLoginForm

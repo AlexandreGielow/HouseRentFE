@@ -1,11 +1,13 @@
 import { useState, useEffect, useCallback } from 'react'
+import SignUpValidation from './SignUpValidation'
 
-const useLoginForm = (loginForm) => {
+const useSubmitForm = (submitForm) => {
   const [values, setValues] = useState({
     Name: '',
     SureName: '',
     Email: '',
-    Password: ''
+    Password: '',
+    ConfirmPassword: ''
   })
 
   const handleChange = (event) => {
@@ -34,20 +36,25 @@ const useLoginForm = (loginForm) => {
         'Content-Type': 'application/json'
       })
     }
-    await fetch('https://localhost:44307/api/Person/authenticate', requestOptions)
+    const response = await fetch('https://localhost:44307/api/Person/authenticate', requestOptions)
+    const responseData = await response.json()
+    localStorage.setItem('token', responseData.token)
+    localStorage.setItem('userName', responseData.person.Name)
   }
 
   const handleFormSubmit = useCallback((event) => {
     event.preventDefault()
+    setErrors(SignUpValidation(values))
+    setDataIsCorrect(true)
     SendLogin(values)
   }, [setErrors, setDataIsCorrect, SendLogin, useCallback])
 
   useEffect(() => {
     if (Object.keys(errors).length === 0 && dataIsCorrect) {
-      loginForm(true)
+      submitForm(true)
     }
   }, [errors])
   return { handleChange, handleFormSubmit, errors, values }
 }
 
-export default useLoginForm
+export default useSubmitForm

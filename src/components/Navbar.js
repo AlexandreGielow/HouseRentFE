@@ -6,9 +6,14 @@ import './Navbar.css'
 function Navbar () {
   const [click, setClick] = useState(false)
   const [button, setButton] = useState(true)
-
   const handleClick = () => setClick(!click)
   const closeMobileMenu = () => setClick(false)
+  const [userLogged, setUserLogged] = useState(false)
+  const userName = useState()
+
+  const getUserName = () => {
+    localStorage.getItem('userName')
+  }
 
   const showButton = () => {
     if (window.innerWidth <= 960) {
@@ -19,7 +24,9 @@ function Navbar () {
   }
   useEffect(() => {
     showButton()
-  }, [showButton])
+    setUserLogged()
+    getUserName()
+  }, [showButton, setUserLogged, getUserName])
 
   const [elements, setElements] = useState('SignUpForm')
   function addElements () {
@@ -70,12 +77,15 @@ function Navbar () {
                             </Link>
                         </li>
                     </ul>
-                    {button && <Link to='/LoginForm'>
+                    {!userLogged && button && <Link to='/LoginForm'>
                         <Button onClick={addElements2} buttonStyle='btn--outline' value='/LoginForm'>LOGIN</Button>
                         </Link>}
-                    {button && <Link to='/SignUpForm'>
+                    {!userLogged && button && <Link to='/SignUpForm'>
                         <Button onClick={addElements} buttonStyle='btn--outline' value='/SignUpForm'>SIGN UP</Button>
                         </Link>}
+                    {userLogged >
+                            <div>Bem vindo {userName}!</div>
+                        }
                 </div>
             </nav>
         </>

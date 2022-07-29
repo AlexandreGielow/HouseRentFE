@@ -1,12 +1,13 @@
 import React from 'react'
-import useLoginForm from '../components/useLoginForm'
-import '../App.css'
+import useLoginForm from '../../components/LoginRegister/useLoginForm'
+import '../../App.css'
 import './SignUpForm.css'
 
 const LoginForm = ({ loginForm }) => {
   const { handleChange, handleFormSubmit, values } = useLoginForm(
     loginForm
   )
+
   return (
     <div className="hero-container">
     <div className="container">
