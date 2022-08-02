@@ -10,7 +10,7 @@ import LoginForm from './pages/LoginRegister/LoginForm'
 
 function App () {
   return (
-        <>
+    <>
             <Router>
                 <Navbar />
                 <Routes>
@@ -24,7 +24,7 @@ function App () {
                     <Route element={<PersisLogin/>}/>
                 </Routes>
             </Router>
-        </>
+    </>
   )
 }
 

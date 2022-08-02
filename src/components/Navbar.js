@@ -2,18 +2,15 @@ import React, { useState, useEffect } from 'react'
 import { Button } from './Button'
 import { Link } from 'react-router-dom'
 import './Navbar.css'
+import { useSelector } from 'react-redux'
 
 function Navbar () {
+  const { name } = useSelector(state => state.user)
+  const { userLogged } = useSelector(state => state.user.isLogged)
   const [click, setClick] = useState(false)
   const [button, setButton] = useState(true)
   const handleClick = () => setClick(!click)
   const closeMobileMenu = () => setClick(false)
-  const [userLogged, setUserLogged] = useState(false)
-  const userName = useState()
-
-  const getUserName = () => {
-    localStorage.getItem('userName')
-  }
 
   const showButton = () => {
     if (window.innerWidth <= 960) {
@@ -24,9 +21,7 @@ function Navbar () {
   }
   useEffect(() => {
     showButton()
-    setUserLogged()
-    getUserName()
-  }, [showButton, setUserLogged, getUserName])
+  }, [showButton])
 
   const [elements, setElements] = useState('SignUpForm')
   function addElements () {
@@ -39,7 +34,7 @@ function Navbar () {
 
   window.addEventListener('resize', showButton)
   return (
-        <>
+    <>
             <nav className='navbar'>
                 <div className='navbar-container'>
                     <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
@@ -84,11 +79,12 @@ function Navbar () {
                         <Button onClick={addElements} buttonStyle='btn--outline' value='/SignUpForm'>SIGN UP</Button>
                         </Link>}
                     {userLogged >
-                            <div>Bem vindo {userName}!</div>
+                            <div>Bem vindo {name}!</div>
                         }
                 </div>
             </nav>
-        </>
+
+    </>
   )
 }
 

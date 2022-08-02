@@ -30,7 +30,7 @@ function CardItem (props) {
         <div>
           <img className='image' src={props.image}></img>
         </div>
-        <div>
+        <div key={props.id}>
             <ul className='titleGroup'>
               <h1 className='title'>{houseType} • </h1>
               <h1 className='title'>{props.rooms} rooms • </h1>

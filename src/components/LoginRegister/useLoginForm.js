@@ -1,7 +1,16 @@
 import { useState, useEffect, useCallback } from 'react'
 import SignUpValidation from './SignUpValidation'
+import { useDispatch } from 'react-redux'
+import { changeUser } from '../../reducers/userLogged'
 
 const useSubmitForm = (submitForm) => {
+  const [name, setName] = useState('')
+  const dispatch = useDispatch()
+
+  const handleLogin = () => {
+    dispatch(changeUser(name))
+  }
+
   const [values, setValues] = useState({
     Name: '',
     SureName: '',
@@ -16,6 +25,7 @@ const useSubmitForm = (submitForm) => {
       [event.target.name]: event.target.value
     })
   }
+
   const [errors, setErrors] = useState({})
   const [dataIsCorrect, setDataIsCorrect] = useState(false)
 
@@ -39,7 +49,8 @@ const useSubmitForm = (submitForm) => {
     const response = await fetch('https://localhost:44307/api/Person/authenticate', requestOptions)
     const responseData = await response.json()
     localStorage.setItem('token', responseData.token)
-    localStorage.setItem('userName', responseData.person.Name)
+    // localStorage.setItem('userName', responseData.person.Name)
+    setName(responseData.person.Name)
   }
 
   const handleFormSubmit = useCallback((event) => {
@@ -47,7 +58,8 @@ const useSubmitForm = (submitForm) => {
     setErrors(SignUpValidation(values))
     setDataIsCorrect(true)
     SendLogin(values)
-  }, [setErrors, setDataIsCorrect, SendLogin, useCallback])
+    handleLogin()
+  }, [setErrors, setDataIsCorrect, SendLogin, useCallback, handleLogin])
 
   useEffect(() => {
     if (Object.keys(errors).length === 0 && dataIsCorrect) {
