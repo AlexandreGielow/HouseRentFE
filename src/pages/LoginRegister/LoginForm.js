@@ -2,6 +2,7 @@ import React from 'react'
 import useLoginForm from '../../components/LoginRegister/useLoginForm'
 import '../../App.css'
 import './SignUpForm.css'
+import { Link } from 'react-router-dom'
 
 const LoginForm = ({ loginForm }) => {
   const { handleChange, handleFormSubmit, values } = useLoginForm(
@@ -24,7 +25,9 @@ const LoginForm = ({ loginForm }) => {
                 <input className="input" type="password" name="Password"value={values.Password} onChange={handleChange}/>
             </div>
             <div className='button'>
+            <Link to='/'>
                 <button className="btn--outline" onClick={handleFormSubmit}>Login</button>
+                </Link>
             </div>
         </form>
     </div>
