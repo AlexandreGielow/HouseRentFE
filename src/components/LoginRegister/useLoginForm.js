@@ -4,13 +4,8 @@ import { useDispatch } from 'react-redux'
 import { changeUser } from '../../reducers/userLogged'
 
 const useSubmitForm = (submitForm) => {
-  const [name, setName] = useState('')
   const dispatch = useDispatch()
-
-  const handleLogin = () => {
-    dispatch(changeUser(name))
-  }
-
+  const [errors, setErrors] = useState({})
   const [values, setValues] = useState({
     Name: '',
     SureName: '',
@@ -19,15 +14,18 @@ const useSubmitForm = (submitForm) => {
     ConfirmPassword: ''
   })
 
+  const [dataIsCorrect, setDataIsCorrect] = useState(false)
+
+  const handleLogin = () => {
+    dispatch(changeUser(name))
+  }
+
   const handleChange = (event) => {
     setValues({
       ...values,
       [event.target.name]: event.target.value
     })
   }
-
-  const [errors, setErrors] = useState({})
-  const [dataIsCorrect, setDataIsCorrect] = useState(false)
 
   const SendLogin = async (values) => {
     const requestOptions = {
@@ -49,8 +47,7 @@ const useSubmitForm = (submitForm) => {
     const response = await fetch('https://localhost:44307/api/Person/authenticate', requestOptions)
     const responseData = await response.json()
     localStorage.setItem('token', responseData.token)
-    // localStorage.setItem('userName', responseData.person.Name)
-    setName(responseData.person.Name)
+    dispatch(changeUser(responseData.person.name))
   }
 
   const handleFormSubmit = useCallback((event) => {

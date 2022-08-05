@@ -1,27 +1,15 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Button } from './Button'
 import { Link } from 'react-router-dom'
 import './Navbar.css'
 import { useSelector } from 'react-redux'
 
 function Navbar () {
-  const { name } = useSelector(state => state.user)
-  const { userLogged } = useSelector(state => state.user.isLogged)
+  const currentName = useSelector(state => state.user.name)
+  const userLogged = useSelector(state => state.user.isLogged)
   const [click, setClick] = useState(false)
-  const [button, setButton] = useState(true)
   const handleClick = () => setClick(!click)
   const closeMobileMenu = () => setClick(false)
-
-  const showButton = () => {
-    if (window.innerWidth <= 960) {
-      setButton(false)
-    } else {
-      setButton(true)
-    }
-  }
-  useEffect(() => {
-    showButton()
-  }, [showButton])
 
   const [elements, setElements] = useState('SignUpForm')
   function addElements () {
@@ -32,7 +20,6 @@ function Navbar () {
     setElements2([...elements2, 'LoginForm'])
   }
 
-  window.addEventListener('resize', showButton)
   return (
     <>
             <nav className='navbar'>
@@ -72,15 +59,15 @@ function Navbar () {
                             </Link>
                         </li>
                     </ul>
-                    {!userLogged && button && <Link to='/LoginForm'>
+                    {!userLogged && <Link to='/LoginForm'>
                         <Button onClick={addElements2} buttonStyle='btn--outline' value='/LoginForm'>LOGIN</Button>
                         </Link>}
-                    {!userLogged && button && <Link to='/SignUpForm'>
+                    {!userLogged && <Link to='/SignUpForm'>
                         <Button onClick={addElements} buttonStyle='btn--outline' value='/SignUpForm'>SIGN UP</Button>
                         </Link>}
-                    {userLogged >
-                            <div>Bem vindo {name}!</div>
-                        }
+                    {userLogged && <Link to='/Profile'>
+                        <Button onClick={addElements} buttonStyle='btn--outline' value='/SignUpForm'>Wellcome {currentName}</Button>
+                        </Link>}
                 </div>
             </nav>
 
