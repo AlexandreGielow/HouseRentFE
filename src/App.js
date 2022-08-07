@@ -7,6 +7,7 @@ import SignUpForm from './pages/LoginRegister/SignUpForm'
 import FetchProperties from './components/properties/FetchProperties'
 import PersisLogin from './components/LoginRegister/PersistLogin'
 import LoginForm from './pages/LoginRegister/LoginForm'
+import NewHomeForm from './pages/Homes/NewHomeForm'
 
 function App () {
   return (
@@ -18,6 +19,7 @@ function App () {
                     <Route exact path='/' element={<Home/>} />
                     <Route path='/SignUpForm' element={<SignUpForm/>} />
                     <Route path='/LoginForm' element={<LoginForm/>} />
+                    <Route path='/NewHomeForm' element={<NewHomeForm/>} />
                     <Route path='./components/SignUpForm' element={<SignUpForm/>} />
                     <Route path='./components/FetchProperties' element={<FetchProperties/>}/>
                     {/* Protected Routes */ }
