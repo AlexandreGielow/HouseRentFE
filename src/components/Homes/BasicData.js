@@ -38,20 +38,20 @@ const NewHomeForm = ({ homeForm }) => {
                 </div>
             </div>
             <div className="text">
-                <label className="label">Value</label>
+                <label className="label">Value peer Month</label>
                 <input className="input" type="text" name="Value" value={values.Value} onChange={handleChange}/>
             </div>
             <div className="text">
-                <label className="label">Size</label>
+                <label className="label">Size (M²)</label>
                 <input className="input" type="text" name="Size" value={values.Size} onChange={handleChange}/>
             </div>
             <div className="text">
                 <label className="label">Rooms</label>
                 <input className="input" type="text" name="Rooms" value={values.Rooms} onChange={handleChange}/>
             </div>
-            <div className="text">
+            <div className="checkbox">
                 <label className="label">Furnished</label>
-                <input className="input" type="text" name="Furnished" value={values.Furnished} onChange={handleChange}/>
+                <input className="input" type="checkbox" name="Furnished" value={values.Furnished} onChange={handleChange}/>
             </div>
             <div className="text">
                 <label className="label">Accommodates</label>
@@ -59,7 +59,7 @@ const NewHomeForm = ({ homeForm }) => {
             </div>
             <div className="text">
                 <label className="label">Description</label>
-                <input className="input" type="Type" name="Description" value={values.Type} onChange={handleChange}/>
+                <input className="input" type="textarea" name="Description" value={values.Type} onChange={handleChange}/>
             </div>
         </form>
   )

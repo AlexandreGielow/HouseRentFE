@@ -14,14 +14,6 @@ const NewHomeForm = ({ homeForm }) => {
   )
 
   const [stage, setStage] = useState(0)
-  const advanceStage = () => {
-    setStage(() => stage + 1)
-    console.log(stage)
-  }
-  const previousStage = () => {
-    setStage(() => stage - 1)
-    console.log(stage)
-  }
 
   return (
     <div className="hero-container">
@@ -29,18 +21,16 @@ const NewHomeForm = ({ homeForm }) => {
         <div className="app-wrapper">
             <h2 className="label">Fill the fields to create a new Home</h2>
         </div>
-        <form>
         {stage === 0 && <BasicData/>}
         {stage === 1 && <AddressData/>}
         {stage === 2 && <Amenities/>}
         {stage === 3 && <Highlights/>}
         {stage === 4 && <RulesAcessibility/>}
             <div className='button'>
-                {stage > 1 && <button className="btn--outline" onClick={() => previousStage}>Previous</button>}
-                {stage < 4 && <button className="btn--outline" onClick={() => advanceStage}>Next</button>}
+                {stage > 0 && <button className="btn--outline" onClick={() => setStage(stage - 1)}>Previous</button>}
+                {stage < 4 && <button className="btn--outline" onClick={() => setStage(stage + 1)}>Next</button>}
                 {stage === 4 && <button className="btn--outline" onClick={handleFormSubmit}>Login</button>}
             </div>
-        </form>
     </div>
 </div>
   )

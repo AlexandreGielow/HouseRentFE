@@ -11,55 +11,36 @@ const NewHomeForm = ({ homeForm }) => {
   return (
         <form className="form-wrapper">
             <div className="text">
-                <label className="label">Type</label>
-                <select className="input" type="text" name="Description" value={values.Description} onChange={handleChange}>
-                    <option value = "0">Room in House</option>
-                    <option value = "1">House</option>
-                    <option value = "2">Apartment</option>
-                    <option value = "3">Trailer</option>
-                </select>
+                <label className="label">Postal Code</label>
+                <input className="input" type="text" name="Name" value={values.PostalCode} onChange={handleChange}/>
             </div>
             <div className="text">
-                <label className="label">Name</label>
-                <input className="input" type="text" name="Name" value={values.Name} onChange={handleChange}/>
+                <label className="label">Country</label>
+                <input className="input" type="text" name="Name" value={values.Country} onChange={handleChange}/>
             </div>
             <div className="text">
-                <label className="label">Status</label>
-                <input className="input" type="text" name="Status" value={values.Status} onChange={handleChange}/>
-            </div>
-            <div>
-                <div className="text">
-                    <label className="label">Avaliable from</label>
-                    <input className="input" type="date" name="DateFrom" value={values.DateFrom} onChange={handleChange}/>
-               </div>
-                <div className="text">
-                    <label className="label">Avaliable to</label>
-                    <input className="input" type="date" name="DateTo" value={values.DateTo} onChange={handleChange}/>
-                </div>
+                <label className="label">State</label>
+                <input className="input" type="text" name="Name" value={values.State} onChange={handleChange}/>
             </div>
             <div className="text">
-                <label className="label">Value</label>
-                <input className="input" type="text" name="Value" value={values.Value} onChange={handleChange}/>
+                <label className="label">City</label>
+                <input className="input" type="text" name="Description" value={values.City} onChange={handleChange}/>
             </div>
             <div className="text">
-                <label className="label">Size</label>
-                <input className="input" type="text" name="Size" value={values.Size} onChange={handleChange}/>
+                <label className="label">Region</label>
+                <input className="input" type="text" name="Description" value={values.Region} onChange={handleChange}/>
             </div>
             <div className="text">
-                <label className="label">Rooms</label>
-                <input className="input" type="text" name="Rooms" value={values.Rooms} onChange={handleChange}/>
+                <label className="label">Address</label>
+                <input className="input" type="text" name="Description" value={values.AddressName} onChange={handleChange}/>
             </div>
             <div className="text">
-                <label className="label">Furnished</label>
-                <input className="input" type="text" name="Furnished" value={values.Furnished} onChange={handleChange}/>
+                <label className="label">Number</label>
+                <input className="input" type="text" name="Description" value={values.Number} onChange={handleChange}/>
             </div>
             <div className="text">
-                <label className="label">Accommodates</label>
-                <input className="input" type="text" name="Accommodates" value={values.Accommodates} onChange={handleChange}/>
-            </div>
-            <div className="text">
-                <label className="label">Description</label>
-                <input className="input" type="Type" name="Description" value={values.Type} onChange={handleChange}/>
+                <label className="label">Complement</label>
+                <input className="input" type="textarea" name="Description" value={values.Complement} onChange={handleChange}/>
             </div>
         </form>
   )
