@@ -17,6 +17,7 @@ const useSubmitForm = (submitForm) => {
   const [dataIsCorrect, setDataIsCorrect] = useState(false)
 
   const handleLogin = () => {
+    // eslint-disable-next-line no-restricted-globals
     dispatch(changeUser(name))
   }
 

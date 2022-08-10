@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { Button } from './Button'
 import { Link } from 'react-router-dom'
 import './Navbar.css'
 import { useSelector } from 'react-redux'
+import Button from '@material-ui/core/Button'
 
 function Navbar () {
   const currentName = useSelector(state => state.user.name)
