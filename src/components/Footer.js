@@ -5,24 +5,6 @@ import { Link } from 'react-router-dom'
 function Footer () {
   return (
         <div className='footer-container'>
-            <section className='footer-subscription'>
-                <p className='footer-subscription-heading'>
-                    Your best option are here
-                </p>
-                <p className='footer-subscription-text'>
-                    You can unsubscribe at any time.
-                </p>
-                <div className='input-areas'>
-                    <form>
-                        <input
-                            className='footer-input'
-                            name='email'
-                            type='email'
-                            placeholder='Your Email'
-                        />
-                    </form>
-                </div>
-            </section>
             <div className='footer-links'>
             </div>
             <section className='social-media'>
@@ -30,7 +12,6 @@ function Footer () {
                     <div className='footer-logo'>
                         <Link to='/' className='social-logo'>
                             Gielow Corp
-                            <i className='fab fa-typo3' />
                         </Link>
                     </div>
                     <small className='website-rights'>Gielow Corp ® 2022</small>

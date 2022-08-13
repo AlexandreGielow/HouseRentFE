@@ -134,13 +134,13 @@
   .mainHomes{
     display: flex;
     align-items: flex-start;
-    padding-left: 20%;
+    padding-left: 10%;
     padding-right: 10%;
     padding-top: 50px;
   }
   
   .listHouses{
-    padding-top: 24px;
+
     max-width: 760px;
     padding-left: 24px;
     padding-right: 24px;

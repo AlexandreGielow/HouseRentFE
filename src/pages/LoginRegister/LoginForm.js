@@ -14,13 +14,11 @@ const LoginForm = ({ loginForm }) => {
   )
 
   return (
-
-    <div className="hero-container">
-        <Box maxWidth='sm' className="container">
+        <Box className="container" sx={ {background: 'black', display: 'flex', 'flex-direction': 'column', 'justify-content': 'center', borderRadius:3} }>
         <div className="app-wrapper">
           <h2 className="lable">Fill your credentials</h2>
         </div>
-        <FormControl sx={{ m: 1, minWidth: 120}} margin='normal'  variant="filled">
+        <FormControl sx={{ m: 1, minWidth: 120, 'background-color': 'black'}} margin='normal'  variant="filled">
                     <TextField
                         name="Email" 
                         value={values.Email} 
@@ -57,7 +55,6 @@ const LoginForm = ({ loginForm }) => {
                     </div>
               </FormControl>
         </Box>
-    </div>
   )
 }
 

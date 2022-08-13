@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './CardItem.css'
 import './Cards.css'
+import { Box } from '@mui/material'
 
 function CardItem (props) {
   const [houseType, setHouseType] = useState('')
@@ -24,8 +25,7 @@ function CardItem (props) {
     showHouseType()
   }, [showHouseType])
   return (
-    <div className='cards__container'>
-      <div className='cards__wrapper'>
+    <Box className="container" sx={ {background: 'black', display: 'flex', 'flex-direction': 'column', 'justify-content': 'center', width:'600px', borderRadius:3 } }>
         <ul className='cards__item'>
         <div>
           <img className='image' src={props.image}></img>
@@ -46,9 +46,8 @@ function CardItem (props) {
           <h3 className='value'>R$: {props.value}</h3>
         </div>
       </ul>
-    </div>
     <div className='horizontalDivider'></div>
-  </div>
+  </Box>
   )
 }
 

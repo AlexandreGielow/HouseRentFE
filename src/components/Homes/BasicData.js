@@ -1,12 +1,10 @@
 import React from 'react'
 import useNewHomeForm from '../../components/Homes/useNewHomeForm'
 import '../../App.css'
-import './NewHomeForm.css'
 import Checkbox from '@mui/material/Checkbox'
 import FormControlLabel from '@mui/material/FormControlLabel'
-import { TextField, FormControl }  from '@mui/material'
+import { TextField, Box }  from '@mui/material'
 import Select from '@mui/material/Select'
-
 import MenuItem from '@mui/material/MenuItem'
 
 
@@ -16,7 +14,7 @@ const NewHomeForm = ({ homeForm }) => {
   )
 
   return (
-        <>
+        <Box className="container" sx={ {background: 'black', display: 'flex', 'flex-direction': 'column', 'justify-content': 'center'  ,borderRadius:3} }>
             <Select 
                 defaultValue={0}
                 label='Type'
@@ -38,26 +36,33 @@ const NewHomeForm = ({ homeForm }) => {
             </Select>
             <TextField
                 type='text'
+                variant='outlined'
+                placeholder='Name'
                 value={values.Name} 
                 onChange={handleChange}/>
             <TextField
                 type='date'
+                placeholder='Avaliable from'
                 value={values.DateFrom} 
                 onChange={handleChange}/>
             <TextField
                 type='date'
+                placeholder='Avaliable To'
                 value={values.DateTo} 
                 onChange={handleChange}/>
             <TextField
                 type='text'
+                placeholder='Value (monthly)'
                 value={values.Value} 
                 onChange={handleChange}/>
             <TextField
                 type='text'
+                placeholder='Size (m²)'
                 value={values.Size} 
                 onChange={handleChange}/>
             <TextField
                 type='text'
+                placeholder='Rooms'
                 value={values.Rooms} 
                 onChange={handleChange}/>                
             <FormControlLabel
@@ -68,13 +73,15 @@ const NewHomeForm = ({ homeForm }) => {
                 label='Furnished'/>
             <TextField
                 type='text'
+                placeholder='Accommodates'
                 value={values.Accommodates} 
                 onChange={handleChange}/>            
             <TextField
                 type='textarea'
+                placeholder='Description'
                 value={values.Description} 
                 onChange={handleChange}/> 
-        </>                   
+        </Box>                   
   )
 }
 

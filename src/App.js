@@ -1,6 +1,7 @@
 import React from 'react'
 import Navbar from './components/Navbar'
 import './App.css'
+import './components/HeroSection'
 import Home from './pages/Home'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import SignUpForm from './pages/LoginRegister/SignUpForm'
@@ -11,44 +12,24 @@ import NewHomeForm from './pages/Homes/NewHomeForm'
 import 'fontsource-roboto'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { grey, orange } from '@mui/material/colors'
+import Footer from './components/Footer'
 
- const temacagada = createTheme({
+ const defaultTheme = createTheme({
+
   palette: {
-    primary: {
-      // Purple and green play nicely together.
-      main: orange[500],
-    },
-    secondary: {
-      // This is green.A700 as hex.
-      main: grey[500],
-    },
-  },
-  select: {
-    '&:before': {
-        borderColor: 'white',
-    },
-    '&:after': {
-        borderColor: 'white',
-    },
-    '&:not(.Mui-disabled):hover::before': {
-        borderColor: 'white',
-    },
-},
-icon: {
-    fill: 'white',
-},
-root: {
-    color: 'white',
-},
-
+    mode: 'dark',
+    primary: orange,
+    secondary: grey
+  }
 })
 
 function App () {
   return (
     <>
     <Router>
-    <ThemeProvider theme={temacagada} >
+    <ThemeProvider theme={defaultTheme} >
       <Navbar />
+      <div className="hero-container">
         <Routes>
           {/* Public Routes */ }
             <Route exact path='/' element={<Home/>} />
@@ -60,8 +41,11 @@ function App () {
           {/* Protected Routes */ }
             <Route element={<PersisLogin/>}/>
           </Routes>
+          </div>
+          <Footer />
           </ThemeProvider>
         </Router>
+  
     </>
   )
 }
