@@ -1,7 +1,6 @@
 import React from 'react'
 import { FetchProperties } from './properties/FetchProperties'
 import './Cards.css'
-import './Button.css'
 import './CardItem.css'
 import Maps from './Maps'
 

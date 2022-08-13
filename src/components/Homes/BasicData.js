@@ -2,6 +2,13 @@ import React from 'react'
 import useNewHomeForm from '../../components/Homes/useNewHomeForm'
 import '../../App.css'
 import './NewHomeForm.css'
+import Checkbox from '@mui/material/Checkbox'
+import FormControlLabel from '@mui/material/FormControlLabel'
+import { TextField, FormControl }  from '@mui/material'
+import Select from '@mui/material/Select'
+
+import MenuItem from '@mui/material/MenuItem'
+
 
 const NewHomeForm = ({ homeForm }) => {
   const { handleChange, values } = useNewHomeForm(
@@ -9,59 +16,65 @@ const NewHomeForm = ({ homeForm }) => {
   )
 
   return (
-        <form className="form-wrapper">
-            <div className="text">
-                <label className="label">Type</label>
-                <select className="input" type="text" name="Description" value={values.Description} onChange={handleChange}>
-                    <option value = "0">Room in House</option>
-                    <option value = "1">House</option>
-                    <option value = "2">Apartment</option>
-                    <option value = "3">Trailer</option>
-                </select>
-            </div>
-            <div className="text">
-                <label className="label">Name</label>
-                <input className="input" type="text" name="Name" value={values.Name} onChange={handleChange}/>
-            </div>
-            <div className="text">
-                <label className="label">Status</label>
-                <input className="input" type="text" name="Status" value={values.Status} onChange={handleChange}/>
-            </div>
-            <div>
-                <div className="text">
-                    <label className="label">Avaliable from</label>
-                    <input className="input" type="date" name="DateFrom" value={values.DateFrom} onChange={handleChange}/>
-               </div>
-                <div className="text">
-                    <label className="label">Avaliable to</label>
-                    <input className="input" type="date" name="DateTo" value={values.DateTo} onChange={handleChange}/>
-                </div>
-            </div>
-            <div className="text">
-                <label className="label">Value peer Month</label>
-                <input className="input" type="text" name="Value" value={values.Value} onChange={handleChange}/>
-            </div>
-            <div className="text">
-                <label className="label">Size (M²)</label>
-                <input className="input" type="text" name="Size" value={values.Size} onChange={handleChange}/>
-            </div>
-            <div className="text">
-                <label className="label">Rooms</label>
-                <input className="input" type="text" name="Rooms" value={values.Rooms} onChange={handleChange}/>
-            </div>
-            <div className="checkbox">
-                <label className="label">Furnished</label>
-                <input className="input" type="checkbox" name="Furnished" value={values.Furnished} onChange={handleChange}/>
-            </div>
-            <div className="text">
-                <label className="label">Accommodates</label>
-                <input className="input" type="text" name="Accommodates" value={values.Accommodates} onChange={handleChange}/>
-            </div>
-            <div className="text">
-                <label className="label">Description</label>
-                <input className="input" type="textarea" name="Description" value={values.Type} onChange={handleChange}/>
-            </div>
-        </form>
+        <>
+            <Select 
+                defaultValue={0}
+                label='Type'
+                value={values.Type} 
+                onChange={handleChange}>
+                    <MenuItem value = {0}>Room in House</MenuItem>
+                    <MenuItem value = {1}>House</MenuItem>
+                    <MenuItem value = {2}>Apartment</MenuItem>
+                    <MenuItem value = {3}>Trailer</MenuItem>
+            </Select>
+            <Select 
+                defaultValue={0}
+                label='Status'
+                value={values.Status} 
+                onChange={handleChange}>
+                    <MenuItem value = {0}>Active</MenuItem>
+                    <MenuItem value = {1}>Inactive</MenuItem>
+                    <MenuItem value = {2}>Expired</MenuItem>
+            </Select>
+            <TextField
+                type='text'
+                value={values.Name} 
+                onChange={handleChange}/>
+            <TextField
+                type='date'
+                value={values.DateFrom} 
+                onChange={handleChange}/>
+            <TextField
+                type='date'
+                value={values.DateTo} 
+                onChange={handleChange}/>
+            <TextField
+                type='text'
+                value={values.Value} 
+                onChange={handleChange}/>
+            <TextField
+                type='text'
+                value={values.Size} 
+                onChange={handleChange}/>
+            <TextField
+                type='text'
+                value={values.Rooms} 
+                onChange={handleChange}/>                
+            <FormControlLabel
+                control={<Checkbox 
+                name="Furnished" 
+                value={values.Furnished} 
+                onChange={handleChange}/>}
+                label='Furnished'/>
+            <TextField
+                type='text'
+                value={values.Accommodates} 
+                onChange={handleChange}/>            
+            <TextField
+                type='textarea'
+                value={values.Description} 
+                onChange={handleChange}/> 
+        </>                   
   )
 }
 

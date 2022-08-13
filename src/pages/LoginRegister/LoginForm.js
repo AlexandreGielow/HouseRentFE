@@ -3,6 +3,10 @@ import useLoginForm from '../../components/LoginRegister/useLoginForm'
 import '../../App.css'
 import './SignUpForm.css'
 import { Link } from 'react-router-dom'
+import TextField from '@mui/material/TextField'
+import Button from '@mui/material/Button'
+import LoginIcon from '@mui/icons-material/LockOpen'
+import { Box, FormControl } from '@mui/material'
 
 const LoginForm = ({ loginForm }) => {
   const { handleChange, handleFormSubmit, values } = useLoginForm(
@@ -10,28 +14,50 @@ const LoginForm = ({ loginForm }) => {
   )
 
   return (
+
     <div className="hero-container">
-    <div className="container">
+        <Box maxWidth='sm' className="container">
         <div className="app-wrapper">
-            <h2 className="lable">Fill your credentials</h2>
+          <h2 className="lable">Fill your credentials</h2>
         </div>
-        <form className="form-wrapper">
-            <div className="email">
-                <label className="label">E-mail</label>
-                <input className="input" type="email" name="Email" value={values.Email} onChange={handleChange}/>
-            </div>
-            <div className="password">
-                <label className="label">Password</label>
-                <input className="input" type="password" name="Password"value={values.Password} onChange={handleChange}/>
-            </div>
-            <div className='button'>
-            <Link to='/'>
-                <button className="btn--outline" onClick={handleFormSubmit}>Login</button>
-                </Link>
-            </div>
-        </form>
+        <FormControl sx={{ m: 1, minWidth: 120}} margin='normal'  variant="filled">
+                    <TextField
+                        name="Email" 
+                        value={values.Email} 
+                        onChange={handleChange}
+                        type='email'
+                        label='Login'
+                        placeholder='Login'
+                        sx={{color:'white'}}
+                        variant='standard'
+                        color='primary'
+                    />
+                    <TextField
+                        type="password" 
+                        name="Password"
+                        value={values.Password} 
+                        onChange={handleChange}
+                        placeholder='Password'
+                        sx={{color:'white'}}
+                        variant='standard'
+                        label='Password'
+                    />
+                    <div>
+                    <Link to='/'>
+                        <Button 
+                        onClick={handleFormSubmit}
+                        variant='contained' 
+                        startIcon={<LoginIcon/>}
+                        color='primary' 
+                        size='large' 
+                        style={{fontSize: 14}}
+                        value='/LoginForm'
+                        >Login</Button>
+                        </Link>
+                    </div>
+              </FormControl>
+        </Box>
     </div>
-</div>
   )
 }
 

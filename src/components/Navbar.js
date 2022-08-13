@@ -2,7 +2,10 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import './Navbar.css'
 import { useSelector } from 'react-redux'
-import Button from '@material-ui/core/Button'
+import { Button } from '@mui/material'
+import LoginIcon from '@mui/icons-material/LockOpen'
+import ProfileIcon from '@mui/icons-material/Person'
+import NewUserIcon from '@mui/icons-material/AddCircle'
 
 function Navbar () {
   const currentName = useSelector(state => state.user.name)
@@ -19,7 +22,7 @@ function Navbar () {
   function addElements2 () {
     setElements2([...elements2, 'LoginForm'])
   }
-
+  
   return (
     <>
             <nav className='navbar'>
@@ -59,14 +62,35 @@ function Navbar () {
                             </Link>
                         </li>
                     </ul>
+
                     {!userLogged && <Link to='/LoginForm'>
-                        <Button onClick={addElements2} buttonStyle='btn--outline' value='/LoginForm'>LOGIN</Button>
+                        <Button 
+                        variant='contained' 
+                        startIcon={<LoginIcon/>}
+                        color='primary' 
+                        size='large' 
+                        style={{fontSize: 14}}
+                        onClick={addElements2}  
+                        value='/LoginForm'>LOGIN</Button>
                         </Link>}
                     {!userLogged && <Link to='/SignUpForm'>
-                        <Button onClick={addElements} buttonStyle='btn--outline' value='/SignUpForm'>SIGN UP</Button>
+                        <Button 
+                        variant='contained' 
+                        color='secondary' 
+                        startIcon={<NewUserIcon/>}
+                        size='large' 
+                        style={{fontSize: 14}}
+                        onClick={addElements}  
+                        value='/SignUpForm'>SIGN-UP</Button>
                         </Link>}
                     {userLogged && <Link to='/Profile'>
-                        <Button onClick={addElements} buttonStyle='btn--outline' value='/SignUpForm'>Wellcome {currentName}</Button>
+                        <Button 
+                        variant='contained' 
+                        color='primary' 
+                        startIcon={<ProfileIcon/>}
+                        size='large' 
+                        onClick={addElements}  
+                        value='/SignUpForm'>Welcome {currentName}</Button>
                         </Link>}
                 </div>
             </nav>

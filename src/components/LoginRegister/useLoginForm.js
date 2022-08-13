@@ -57,13 +57,13 @@ const useSubmitForm = (submitForm) => {
     setDataIsCorrect(true)
     SendLogin(values)
     handleLogin()
-  }, [setErrors, setDataIsCorrect, SendLogin, useCallback, handleLogin])
+  }, [setErrors, setDataIsCorrect, SendLogin, handleLogin, values])
 
   useEffect(() => {
     if (Object.keys(errors).length === 0 && dataIsCorrect) {
       submitForm(true)
     }
-  }, [errors])
+  }, [errors, dataIsCorrect, submitForm])
   return { handleChange, handleFormSubmit, errors, values }
 }
 

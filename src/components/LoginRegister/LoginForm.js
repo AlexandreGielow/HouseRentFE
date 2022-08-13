@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import SignUpForm from './SignUpForm'
 import SignUpFormSuccess from './SignUpFormSuccess'
 
-const loginForm = () => {
+const LoginForm = () => {
   const [formIsSubmitted, setFormIsSubmited] = useState(false)
   const loginForm = () => {
     setFormIsSubmited(true)
@@ -19,4 +19,4 @@ const loginForm = () => {
         </div>
   )
 }
-export default loginForm
+export default LoginForm
