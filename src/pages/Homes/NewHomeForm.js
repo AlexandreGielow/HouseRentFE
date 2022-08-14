@@ -17,7 +17,7 @@ const NewHomeForm = ({ homeForm }) => {
 
   return (
     <>
-      <FormControl sx={{ m: 1, minWidth: 120 }} margin='normal'  variant="filled">
+      <FormControl sx={{ m: 1, minWidth: 120 }} margin='normal'  variant='standard'>
         <Box  sx={{borderRadius:3}} maxWidth='sm' className="container">
           <h2 className="label">Fill the fields to create a new Home</h2>
         </Box>
@@ -28,7 +28,7 @@ const NewHomeForm = ({ homeForm }) => {
         {stage === 4 && <RulesAcessibility/>}
              {stage > 0 &&  <Button 
                         variant='contained' 
-                        color='primary'                         
+                        color='secondary'                         
                         size='large' 
                         style={{fontSize: 14}} 
                         onClick={() => setStage(stage - 1)}>Previous</Button>}

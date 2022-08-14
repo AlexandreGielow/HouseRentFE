@@ -1,10 +1,20 @@
 import React, { useState, useEffect } from 'react'
 import './CardItem.css'
 import './Cards.css'
-import { Box } from '@mui/material'
+import { Box, Typography, Paper } from '@mui/material'
+import Grid from '@mui/material/Unstable_Grid2'
+import { styled } from '@mui/material/styles';
 
 function CardItem (props) {
   const [houseType, setHouseType] = useState('')
+
+  const Item = styled(Paper)(({ theme }) => ({
+    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+    ...theme.typography.body2,
+    padding: theme.spacing(1),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  }));
 
   const showHouseType = () => {
     switch (props.type) {
@@ -25,12 +35,13 @@ function CardItem (props) {
     showHouseType()
   }, [showHouseType])
   return (
-    <Box className="container" sx={ {background: 'black', display: 'flex', 'flex-direction': 'column', 'justify-content': 'center', width:'600px', borderRadius:3 } }>
-        <ul className='cards__item'>
-        <div>
-          <img className='image' src={props.image}></img>
-        </div>
-        <div key={props.id}>
+    <Box sx={ {background: '#333333', display: 'flex', flexDirection: 'column', justifyContent: 'center', width:'550px', borderRadius:3, padding:'10px', marginTop:'5px' } }>
+    <Grid container spacing={2}>
+      <Grid xl={4}>
+        <img className='image' src={props.image}></img>
+      </Grid>
+      <Grid xl={8}>
+      <div key={props.id}>
             <ul className='titleGroup'>
               <h1 className='title'>{houseType} • </h1>
               <h1 className='title'>{props.rooms} rooms • </h1>
@@ -45,8 +56,9 @@ function CardItem (props) {
           </h5>
           <h3 className='value'>R$: {props.value}</h3>
         </div>
-      </ul>
-    <div className='horizontalDivider'></div>
+      </Grid>
+    </Grid>
+
   </Box>
   )
 }
