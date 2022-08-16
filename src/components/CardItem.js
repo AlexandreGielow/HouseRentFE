@@ -16,7 +16,8 @@ function CardItem (props) {
     color: theme.palette.text.secondary,
   }));
 
-  const showHouseType = () => {
+
+  useEffect(() => {
     switch (props.type) {
       case 0:
         setHouseType('Room In House')
@@ -30,10 +31,7 @@ function CardItem (props) {
       default:
         setHouseType('Wrong Type')
     }
-  }
-  useEffect(() => {
-    showHouseType()
-  }, [showHouseType])
+  }, [setHouseType, props.type])
   return (
     <Box sx={ {background: '#333333', display: 'flex', flexDirection: 'column', justifyContent: 'center', width:'550px', borderRadius:3, padding:'10px', marginTop:'5px' } }>
     <Grid container spacing={2}>
@@ -58,7 +56,6 @@ function CardItem (props) {
         </div>
       </Grid>
     </Grid>
-
   </Box>
   )
 }

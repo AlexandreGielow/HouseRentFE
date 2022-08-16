@@ -3,17 +3,18 @@ import CardItem from '../CardItem'
 
 export const FetchProperties = () => {
   const [properties, setProperties] = useState([])
-  const requestOptions = {
-    method: 'GET',
-    json: true,
-    headers: new Headers({
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
-      'Access-Control-Allow-Methods': 'PUT, GET, POST, DELETE, OPTIONS',
-      'Content-Type': 'application/json'
-    })
-  }
+
   useEffect(() => {
+    const requestOptions = {
+      method: 'GET',
+      json: true,
+      headers: new Headers({
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
+        'Access-Control-Allow-Methods': 'PUT, GET, POST, DELETE, OPTIONS',
+        'Content-Type': 'application/json'
+      })
+    }
     const getProperties = async () => {
       const response = await fetch('https://localhost:44307/api/Property', requestOptions)
       const json = await response.json()
