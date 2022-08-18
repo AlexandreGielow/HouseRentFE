@@ -2,7 +2,7 @@ import React from 'react'
 import useNewHomeForm from '../../components/Homes/useNewHomeForm'
 import '../../App.css'
 import Checkbox from '@mui/material/Checkbox'
-import { TextField, Box ,Select, MenuItem, FormControlLabel, FormLabel, FormGroup, Button }  from '@mui/material'
+import { TextField, Box ,Select, MenuItem, FormControlLabel, FormLabel, FormGroup}  from '@mui/material'
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import { DatePicker } from '@mui/x-date-pickers/DatePicker'
@@ -78,6 +78,7 @@ const NewHomeForm = ({ homeForm }) => {
             <TextField
                 type='text'
                 placeholder='4'
+                name="Accommodates" 
                 variant='standard'
                 sx={{marginBottom:'10px'}}
                 value={values.Accommodates} 
@@ -87,6 +88,7 @@ const NewHomeForm = ({ homeForm }) => {
                 type='textarea'
                 placeholder='Fill details that draw attention'
                 variant='standard'
+                name="Description" 
                 multiline
                 rows={2}
                 sx={{marginBottom:'10px'}}
@@ -95,7 +97,7 @@ const NewHomeForm = ({ homeForm }) => {
             <LocalizationProvider dateAdapter={AdapterDateFns}>
                 <DatePicker
                     label="Avaliable from"  
-                                   
+                    name="AvaliableFrom"                
                     value={values.DateFrom}
                     onChange={handleChange}
                     renderInput={(params) => <TextField {...params} />}
@@ -104,7 +106,8 @@ const NewHomeForm = ({ homeForm }) => {
             <Box sx={{marginBottom:'10px'}}></Box>
             <LocalizationProvider  dateAdapter={AdapterDateFns}>
                 <DatePicker
-                    label="Avaliable to"                    
+                    label="Avaliable to"  
+                    name="AvaliableTo"                       
                     value={values.DateTo} 
                     onChange={handleChange}
                     renderInput={(params) => <TextField {...params} />}

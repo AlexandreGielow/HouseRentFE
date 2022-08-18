@@ -6,6 +6,7 @@ import AmenitiesList from './AmenitiesList'
 const NewHomeForm = () => {
 
   const [ input,setInput] = useState({
+    Id: uuidv4(),
     Name: '',
     Type:''
   })
@@ -15,24 +16,28 @@ const NewHomeForm = () => {
       [event.target.name]: event.target.value
     })
   }
-  const [amenities,setAmenities] = useState([input])
+  const [amenities,setAmenities] = useState([])
 
 
   const onFormSubmit = (event) => {
     event.preventDefault()
-    setAmenities([...amenities, {id: uuidv4(), Name: input, Type: input }])
-    console.log(amenities)
+    setAmenities([...amenities, input])
+    setInput({
+      Id:uuidv4(),
+      Name: '',
+      Type: ''
+    })
   }
 
   return (
-    <Box className="container" sx={ {background: 'black', display: 'flex', 'flex-direction': 'column', 'justify-content': 'center' ,borderRadius:3} }>
+    <Box className="container" sx={ {background: 'black', display: 'flex', flexDirection: 'column', justifyContent: 'center' ,borderRadius:3} }>
       <FormLabel sx={{color:'white'}}>Amenitie</FormLabel>    
       <TextField
         type='text'
         placeholder='Fridge, Oven ...'
         variant='standard'
         name='Name'
-        sx={{'margin-bottom':'10px'}}
+        sx={{marginBottom:'10px'}}
         value={input.Name} 
         required
         onChange={onInputChange}/>
@@ -42,7 +47,7 @@ const NewHomeForm = () => {
               label='Type'
               name='Type'
               value={input.Type} 
-              sx={{'margin-bottom':'10px', 'margin-top':'1px'}}
+              sx={{marginBottom:'10px', marginTop:'1px'}}
               onChange={onInputChange}>
                   <MenuItem value = {0}>Kitchen</MenuItem>
                   <MenuItem value = {1}>Washing</MenuItem>
@@ -55,10 +60,10 @@ const NewHomeForm = () => {
             color='primary'                         
             size='large' 
             type='submit'
-            style={{fontSize: 14, display:'flex', 'align-items': 'center', width:'30px', 'margin-bottom':'20px'}} 
+            style={{fontSize: 14, display:'flex', alignItems: 'center', width:'30px', marginBottom:'20px'}} 
             onClick={onFormSubmit}
             >Add</Button>
-
+          <AmenitiesList amenitiess = {amenities}></AmenitiesList>
       </Box>
   )
 }

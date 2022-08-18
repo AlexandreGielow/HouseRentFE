@@ -16,10 +16,7 @@ const useSubmitForm = (submitForm) => {
 
   const [dataIsCorrect, setDataIsCorrect] = useState(false)
 
-  const handleLogin = () => {
-    // eslint-disable-next-line no-restricted-globals
-    dispatch(changeUser(name))
-  }
+
 
   const handleChange = (event) => {
     setValues({
@@ -28,36 +25,42 @@ const useSubmitForm = (submitForm) => {
     })
   }
 
-  const SendLogin = async (values) => {
-    const requestOptions = {
-      method: 'POST',
-      body: JSON.stringify({
-        Email: values.Email,
-        Name: '',
-        Password: values.Password,
-        SureName: ''
-      }),
-      json: true,
-      headers: new Headers({
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
-        'Access-Control-Allow-Methods': 'PUT, GET, POST, DELETE, OPTIONS',
-        'Content-Type': 'application/json'
-      })
-    }
-    const response = await fetch('https://localhost:44307/api/Person/authenticate', requestOptions)
-    const responseData = await response.json()
-    localStorage.setItem('token', responseData.token)
-    dispatch(changeUser(responseData.person.name))
-  }
+
 
   const handleFormSubmit = useCallback((event) => {
+    const SendLogin = async (values) => {
+      const requestOptions = {
+        method: 'POST',
+        body: JSON.stringify({
+          Email: values.Email,
+          Name: '',
+          Password: values.Password,
+          SureName: ''
+        }),
+        json: true,
+        headers: new Headers({
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
+          'Access-Control-Allow-Methods': 'PUT, GET, POST, DELETE, OPTIONS',
+          'Content-Type': 'application/json'
+        })
+      }
+      const response = await fetch('https://localhost:44307/api/Person/authenticate', requestOptions)
+      const responseData = await response.json()
+      localStorage.setItem('token', responseData.token)
+      dispatch(changeUser(responseData.person.name))
+    }
+    const handleLogin = () => {
+      // eslint-disable-next-line no-restricted-globals
+      dispatch(changeUser(name))
+    }
+    
     event.preventDefault()
     setErrors(SignUpValidation(values))
     setDataIsCorrect(true)
     SendLogin(values)
     handleLogin()
-  }, [setErrors, setDataIsCorrect, SendLogin, handleLogin, values])
+  }, [setErrors, setDataIsCorrect, values, dispatch])
 
   useEffect(() => {
     if (Object.keys(errors).length === 0 && dataIsCorrect) {
