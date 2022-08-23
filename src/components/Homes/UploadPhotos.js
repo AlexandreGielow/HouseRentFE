@@ -3,7 +3,7 @@ import { TextField, Box, Button, FormLabel }  from '@mui/material'
 import {v4 as uuidv4} from 'uuid'
 import RulesList from './RulesList'
 
-const NewHomeFormRules = () => {
+const NewHomeFormPhotos = () => {
 
   const [ input,setInput] = useState({
     Id: uuidv4(),
@@ -16,12 +16,12 @@ const NewHomeFormRules = () => {
       [event.target.name]: event.target.value
     })
   }
-  const [rules,setRules] = useState([])
+  const [photo,setPhoto] = useState([])
 
 
   const onFormSubmit = (event) => {
     event.preventDefault()
-    setRules([...rules, input])
+    setPhoto([...photo, input])
     setInput({
       Id:uuidv4(),
       Name: '',
@@ -31,7 +31,7 @@ const NewHomeFormRules = () => {
   return (
     <>
             <Box className="container" sx={ {background: 'black', display: 'flex', flexDirection: 'column', justifyContent: 'center' ,borderRadius:3} }>
-      <FormLabel sx={{color:'white'}}>Rules and Accessibility</FormLabel>    
+      <FormLabel sx={{color:'white'}}>Photos</FormLabel>    
       <TextField
         type='text'
         placeholder='Pets, Smoke, Wheelchair accessibility  ...'
@@ -49,10 +49,10 @@ const NewHomeFormRules = () => {
             style={{fontSize: 14, display:'flex', alignItems: 'center', width:'30px', marginBottom:'20px'}} 
             onClick={onFormSubmit}
             >Add</Button>
-          <RulesList ruless = {rules}></RulesList>
+          <RulesList photos = {photo}></RulesList>
       </Box>
     </>
   )
 }
 
-export default NewHomeFormRules
+export default NewHomeFormPhotos

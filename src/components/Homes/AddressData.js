@@ -2,7 +2,7 @@ import React from 'react'
 import useNewHomeForm from './useNewHomeForm'
 import { TextField, Box, FormLabel, FormGroup }  from '@mui/material'
 
-const NewHomeForm = ({ homeForm }) => {
+const NewHomeFormAddress = ({ homeForm }) => {
   const { handleChange, values } = useNewHomeForm(
     homeForm
   )
@@ -81,4 +81,4 @@ const NewHomeForm = ({ homeForm }) => {
   )
 }
 
-export default NewHomeForm
+export default NewHomeFormAddress

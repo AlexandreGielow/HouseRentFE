@@ -8,7 +8,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import { DatePicker } from '@mui/x-date-pickers/DatePicker'
 
 
-const NewHomeForm = ({ homeForm }) => {
+const NewHomeFormBasic = ({ homeForm }) => {
   const { handleChange, values } = useNewHomeForm(
     homeForm
   )
@@ -119,4 +119,4 @@ const NewHomeForm = ({ homeForm }) => {
   )
 }
 
-export default NewHomeForm
+export default NewHomeFormBasic

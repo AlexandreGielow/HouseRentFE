@@ -1,68 +1,58 @@
-import React from 'react'
-import useNewHomeForm from './useNewHomeForm'
-import '../../App.css'
-import './NewHomeForm.css'
+import React, { useState } from 'react'
+import { TextField, Box, Button, FormLabel }  from '@mui/material'
+import {v4 as uuidv4} from 'uuid'
+import HighlightList from './HighlightList'
 
-const NewHomeForm = ({ homeForm }) => {
-  const { handleChange, values } = useNewHomeForm(
-    homeForm
-  )
+const NewHomeFormHighligths = () => {
 
+  const [ input,setInput] = useState({
+    Id: uuidv4(),
+    Name: '',
+    Type:''
+  })
+  const onInputChange = (event) => {
+    setInput({
+      ...input,
+      [event.target.name]: event.target.value
+    })
+  }
+  const [highlights,setHighlights] = useState([])
+
+
+  const onFormSubmit = (event) => {
+    event.preventDefault()
+    setHighlights([...highlights, input])
+    setInput({
+      Id:uuidv4(),
+      Name: '',
+      Type: ''
+    })
+  }
   return (
-        <form className="form-wrapper">
-            <div className="text">
-                <label className="label">Type</label>
-                <select className="input" type="text" name="Description" value={values.Description} onChange={handleChange}>
-                    <option value = "0">Room in House</option>
-                    <option value = "1">House</option>
-                    <option value = "2">Apartment</option>
-                    <option value = "3">Trailer</option>
-                </select>
-            </div>
-            <div className="text">
-                <label className="label">Name</label>
-                <input className="input" type="text" name="Name" value={values.Name} onChange={handleChange}/>
-            </div>
-            <div className="text">
-                <label className="label">Status</label>
-                <input className="input" type="text" name="Status" value={values.Status} onChange={handleChange}/>
-            </div>
-            <div>
-                <div className="text">
-                    <label className="label">Avaliable from</label>
-                    <input className="input" type="date" name="DateFrom" value={values.DateFrom} onChange={handleChange}/>
-               </div>
-                <div className="text">
-                    <label className="label">Avaliable to</label>
-                    <input className="input" type="date" name="DateTo" value={values.DateTo} onChange={handleChange}/>
-                </div>
-            </div>
-            <div className="text">
-                <label className="label">Value</label>
-                <input className="input" type="text" name="Value" value={values.Value} onChange={handleChange}/>
-            </div>
-            <div className="text">
-                <label className="label">Size</label>
-                <input className="input" type="text" name="Size" value={values.Size} onChange={handleChange}/>
-            </div>
-            <div className="text">
-                <label className="label">Rooms</label>
-                <input className="input" type="text" name="Rooms" value={values.Rooms} onChange={handleChange}/>
-            </div>
-            <div className="text">
-                <label className="label">Furnished</label>
-                <input className="input" type="text" name="Furnished" value={values.Furnished} onChange={handleChange}/>
-            </div>
-            <div className="text">
-                <label className="label">Accommodates</label>
-                <input className="input" type="text" name="Accommodates" value={values.Accommodates} onChange={handleChange}/>
-            </div>
-            <div className="text">
-                <label className="label">Description</label>
-                <input className="input" type="Type" name="Description" value={values.Type} onChange={handleChange}/>
-            </div>
-        </form>
+    <>
+            <Box className="container" sx={ {background: 'black', display: 'flex', flexDirection: 'column', justifyContent: 'center' ,borderRadius:3} }>
+      <FormLabel sx={{color:'white'}}>Highlight</FormLabel>    
+      <TextField
+        type='text'
+        placeholder='Balcony/patio, Great View, Low traffic ...'
+        variant='standard'
+        name='Name'
+        sx={{marginBottom:'10px'}}
+        value={input.Name} 
+        required
+        onChange={onInputChange}/>
+        <Button 
+            variant='contained' 
+            color='primary'                         
+            size='large' 
+            type='submit'
+            style={{fontSize: 14, display:'flex', alignItems: 'center', width:'30px', marginBottom:'20px'}} 
+            onClick={onFormSubmit}
+            >Add</Button>
+          <HighlightList highlightss = {highlights}></HighlightList>
+      </Box>
+    </>
   )
 }
 
-export default NewHomeForm
+export default NewHomeFormHighligths

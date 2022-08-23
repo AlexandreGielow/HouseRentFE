@@ -3,7 +3,7 @@ import { TextField, Box, Button, Select, MenuItem, FormLabel }  from '@mui/mater
 import {v4 as uuidv4} from 'uuid'
 import AmenitiesList from './AmenitiesList'
 
-const NewHomeForm = () => {
+const NewHomeFormAmenities = () => {
 
   const [ input,setInput] = useState({
     Id: uuidv4(),
@@ -68,4 +68,4 @@ const NewHomeForm = () => {
   )
 }
 
-export default NewHomeForm
+export default NewHomeFormAmenities
