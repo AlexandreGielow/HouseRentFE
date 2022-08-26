@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { TextField, Box, Button, Select, MenuItem, FormLabel }  from '@mui/material'
+import { TextField, Box, Button, Select, MenuItem, FormLabel, FormGroup }  from '@mui/material'
 import {v4 as uuidv4} from 'uuid'
 import AmenitiesList from './AmenitiesList'
 
@@ -31,6 +31,7 @@ const NewHomeFormAmenities = () => {
 
   return (
     <Box className="container" sx={ {background: 'black', display: 'flex', flexDirection: 'column', justifyContent: 'center' ,borderRadius:3} }>
+      <FormGroup>
       <FormLabel sx={{color:'white'}}>Amenitie</FormLabel>    
       <TextField
         type='text'
@@ -64,6 +65,7 @@ const NewHomeFormAmenities = () => {
             onClick={onFormSubmit}
             >Add</Button>
           <AmenitiesList amenitiess = {amenities}></AmenitiesList>
+          </FormGroup>
       </Box>
   )
 }

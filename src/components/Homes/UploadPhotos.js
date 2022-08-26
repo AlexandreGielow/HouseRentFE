@@ -1,55 +1,49 @@
 import React, { useState } from 'react'
-import { TextField, Box, Button, FormLabel }  from '@mui/material'
-import {v4 as uuidv4} from 'uuid'
-import RulesList from './RulesList'
+import { Box, Button, FormLabel,FormGroup }  from '@mui/material'
+import IconButton from '@mui/material/IconButton';
+import PhotoCamera from '@mui/icons-material/PhotoCamera';
+import Gallery from '../Gallery'
 
 const NewHomeFormPhotos = () => {
+  const [photos,setPhotos] = useState([])
 
-  const [ input,setInput] = useState({
-    Id: uuidv4(),
-    Name: '',
-    Type:''
-  })
-  const onInputChange = (event) => {
-    setInput({
-      ...input,
-      [event.target.name]: event.target.value
-    })
+	const uploadHandler = (event) =>{
+		 const file = event.target.files[0]
+     if(!file) return
+     file.isUploading = true
+     setPhotos([...photos,file])
+     //aqui mandar o arquivo para o backend
+     const formData = new FormData()
+     formData.append(
+        file.name,
+        file,
+        file.name
+     )
+     //chamar a API aqui
+     file.isUploading = false
+     setPhotos([...photos,file])
+	}	
+  //acho que vou mover isso pra galeria, adicionar na chamada
+  const removePhoto = (fileName) =>{
+    setPhotos(photos.filter(file => file.name !==fileName))
   }
-  const [photo,setPhoto] = useState([])
 
 
-  const onFormSubmit = (event) => {
-    event.preventDefault()
-    setPhoto([...photo, input])
-    setInput({
-      Id:uuidv4(),
-      Name: '',
-      Type: ''
-    })
-  }
   return (
     <>
-            <Box className="container" sx={ {background: 'black', display: 'flex', flexDirection: 'column', justifyContent: 'center' ,borderRadius:3} }>
-      <FormLabel sx={{color:'white'}}>Photos</FormLabel>    
-      <TextField
-        type='text'
-        placeholder='Pets, Smoke, Wheelchair accessibility  ...'
-        variant='standard'
-        name='Name'
-        sx={{marginBottom:'10px'}}
-        value={input.Name} 
-        required
-        onChange={onInputChange}/>
-        <Button 
-            variant='contained' 
-            color='primary'                         
-            size='large' 
-            type='submit'
-            style={{fontSize: 14, display:'flex', alignItems: 'center', width:'30px', marginBottom:'20px'}} 
-            onClick={onFormSubmit}
-            >Add</Button>
-          <RulesList photos = {photo}></RulesList>
+      <Box className="container" sx={ {background: 'black', display: 'flex', flexDirection: 'column', justifyContent: 'center' ,borderRadius:3} }>
+      <FormGroup>
+          <FormLabel sx={{color:'white'}}>Upload the Photos</FormLabel>    
+          <Button variant="contained" component="label" onChange={uploadHandler} >
+            Upload
+            <input hidden accept="image/*" multiple type="file" />
+          </Button>
+          <IconButton color="primary" aria-label="upload picture" component="label">
+            <input hidden accept="image/*" type="file" />
+            <PhotoCamera />
+          </IconButton>
+          {<Gallery photos={photos} />}
+        </FormGroup>
       </Box>
     </>
   )
