@@ -27,8 +27,6 @@ const NewHomeFormPhotos = () => {
   const removePhoto = (fileName) =>{
     setPhotos(photos.filter(file => file.name !==fileName))
   }
-
-
   return (
     <>
       <Box className="container" sx={ {background: 'black', display: 'flex', flexDirection: 'column', justifyContent: 'center' ,borderRadius:3} }>
@@ -42,7 +40,7 @@ const NewHomeFormPhotos = () => {
             <input hidden accept="image/*" type="file" />
             <PhotoCamera />
           </IconButton>
-          {<Gallery photos={photos} />}
+          {<Gallery photos={photos} source="local"/>}
         </FormGroup>
       </Box>
     </>
