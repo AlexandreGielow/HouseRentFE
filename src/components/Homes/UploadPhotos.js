@@ -24,9 +24,9 @@ const NewHomeFormPhotos = () => {
      setPhotos([...photos,file])
 	}	
   //acho que vou mover isso pra galeria, adicionar na chamada
-  const removePhoto = (fileName) =>{
+  /*const removePhoto = (fileName) =>{
     setPhotos(photos.filter(file => file.name !==fileName))
-  }
+  }*/
   return (
     <>
       <Box className="container" sx={ {background: 'black', display: 'flex', flexDirection: 'column', justifyContent: 'center' ,borderRadius:3} }>
