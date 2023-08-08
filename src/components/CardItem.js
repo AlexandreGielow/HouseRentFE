@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './CardItem.css'
 import './Cards.css'
-import { Box, Typography, Paper } from '@mui/material'
+import { Box, Paper } from '@mui/material'
 import Grid from '@mui/material/Unstable_Grid2'
 import { styled } from '@mui/material/styles';
 

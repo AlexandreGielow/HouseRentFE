@@ -1,10 +1,13 @@
-import React from 'react'
+import React, {useState } from 'react'
 import { FetchProperties } from './properties/FetchProperties'
 import './Cards.css'
 import './CardItem.css'
 import Maps from './Maps'
+import { FormControl, TextField } from '@mui/material'
 
 function Cards () {
+  const [searchCity, setSearchCity] = useState('')
+  const [searchFilter, setSearchFilter] = useState('')
   return (
     <div>
       <div>
@@ -12,16 +15,22 @@ function Cards () {
       </div>
       <div className='mainHomes'>
         <div className='listHouses'>
-          <div>
-            <div className='locationFilter' >
-              <div data-icon="search">
-            </div>
-          <div className='cityFilter' placeholder='Search cities and areas'></div>
-        </div>
-        </div>
-          <div>
-            <FetchProperties/>
-          </div>
+            <FormControl fullWidth>
+            <TextField 
+              id="outlined-basic" 
+              label="Find by something" 
+              variant="outlined"
+              value={searchFilter}
+              onChange={(event) => setSearchFilter(event.target.value)} />                      
+            <TextField 
+              id="outlined-basic" 
+              label="Find by City" 
+              variant="outlined"
+              value={searchCity}
+              onChange={(event) => setSearchCity(event.target.value)} />   
+          </FormControl>
+            <FetchProperties
+            filter={searchFilter}/>
         </div>
         <div className='maps'>
           <Maps/>

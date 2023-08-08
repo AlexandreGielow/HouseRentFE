@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import CardItem from '../CardItem'
 
-export const FetchProperties = () => {
+export const FetchProperties = ({filter}) => {
   const [properties, setProperties] = useState([])
-
   useEffect(() => {
     const requestOptions = {
       method: 'GET',
@@ -16,12 +15,19 @@ export const FetchProperties = () => {
       })
     }
     const getProperties = async () => {
-      const response = await fetch('https://localhost:44307/api/Property', requestOptions)
+      var response = null
+      if (filter.length>0){
+         response = await fetch(`https://localhost:7023/api/Property/search/${filter}`, requestOptions)
+      }
+      else
+      { 
+        response = await fetch('https://localhost:7023/api/Property', requestOptions)
+      }
       const json = await response.json()
       setProperties(json)
     }
     getProperties()
-  }, [setProperties])
+  }, [filter, setProperties])
 
   if (properties.length <= 0) {
     return <h1>There is No Properties with this filter</h1>
