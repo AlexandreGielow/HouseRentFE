@@ -3,7 +3,6 @@ import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 
 export default function Gallery({photos, source}) {
-
 	return (
 		<ImageList sx={{ width: 400, height: 350 }} cols={3} rowHeight={164}>
 		  {Array.isArray(photos)  ? photos.map((item) => (

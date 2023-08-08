@@ -9,7 +9,7 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker'
 
 
 const NewHomeFormBasic = ({ homeForm }) => {
-  const { handleChange, handleFormSubmit,  values } = useNewHomeForm(
+  const { handleChange,  values } = useNewHomeForm(
     homeForm
   )
 
