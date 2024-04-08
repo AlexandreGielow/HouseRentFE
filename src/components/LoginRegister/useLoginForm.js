@@ -45,7 +45,7 @@ const useSubmitForm = (submitForm) => {
           'Content-Type': 'application/json'
         })
       }
-      const response = await fetch('https://localhost:44307/api/Person/authenticate', requestOptions)
+      const response = await fetch('https://localhost:44307/api/v1/Person/authenticate', requestOptions)
       const responseData = await response.json()
       localStorage.setItem('token', responseData.token)
       dispatch(changeUser(responseData.person.name))

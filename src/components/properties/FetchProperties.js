@@ -17,11 +17,11 @@ export const FetchProperties = ({filter}) => {
     const getProperties = async () => {
       var response = null
       if (filter.length>0){
-         response = await fetch(`https://localhost:7023/api/Property/search/${filter}`, requestOptions)
+         response = await fetch(`https://localhost:7023/api/v1/Properties/search/${filter}`, requestOptions)
       }
       else
       { 
-        response = await fetch('https://localhost:7023/api/Property', requestOptions)
+        response = await fetch('https://localhost:7023/api/v1/Properties', requestOptions)
       }
       const json = await response.json()
       setProperties(json)

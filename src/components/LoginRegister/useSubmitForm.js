@@ -35,7 +35,7 @@ const useLoginForm = (loginForm) => {
         'Content-Type': 'application/json'
       })
     }
-    await fetch('https://localhost:44307/api/Person', requestOptions)
+    await fetch('https://localhost:44307/api/v1/Person', requestOptions)
   }
 
   const handleFormSubmit = useCallback((event) => {
