@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import CardItem from '../CardItem'
+import CardItem from '../Utils/CardItem'
 
-export const FetchProperties = ({filter}) => {
-  const [properties, setProperties] = useState([])
+export const FetchStores = ({filter}) => {
+  const [Stores, setStores] = useState([])
   useEffect(() => {
     const requestOptions = {
       method: 'GET',
@@ -14,28 +14,28 @@ export const FetchProperties = ({filter}) => {
         'Content-Type': 'application/json'
       })
     }
-    const getProperties = async () => {
+    const getStores = async () => {
       var response = null
       if (filter.length>0){
-         response = await fetch(`https://localhost:7023/api/v1/Properties/search/${filter}`, requestOptions)
+         response = await fetch(`https://localhost:7023/api/v1/Stores/search/${filter}`, requestOptions)
       }
       else
       { 
-        response = await fetch('https://localhost:7023/api/v1/Properties', requestOptions)
+        response = await fetch('https://localhost:7023/api/v1/Stores', requestOptions)
       }
       const json = await response.json()
-      setProperties(json)
+      setStores(json)
     }
-    getProperties()
-  }, [filter, setProperties])
+    getStores()
+  }, [filter, setStores])
 
-  if (properties.length <= 0) {
-    return <h1>There is No Properties with this filter</h1>
+  if (Stores.length <= 0) {
+    return <h1>There is No Stores with this filter</h1>
   }
   return (
   <>
     {
-      properties.map(property => (
+      Stores.map(property => (
         <CardItem
         key={property.id}
         name={property.name}
@@ -54,4 +54,4 @@ export const FetchProperties = ({filter}) => {
   </>)
 }
 
-export default FetchProperties
+export default FetchStores

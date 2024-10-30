@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
-import WebService from '../../api/WebService'
+//import WebService from '../../api/WebService'
 
-const useNewHomeForm = (homeForm) => {
+const useNewStoreForm = (storeForm) => {
   const [values, setValues] = useState({
     Name: ''
   })
@@ -13,13 +13,13 @@ const useNewHomeForm = (homeForm) => {
     })
   }
 
-  const handleFormSubmit = () =>{
-    WebService(values,"Property")
-  } 
+  //const handleFormSubmit = () =>{
+  //  WebService(values,"Property")
+  //} 
 
   useEffect(() => {
   }, [])
   return { handleChange, values }
 }
 
-export default useNewHomeForm
+export default useNewStoreForm

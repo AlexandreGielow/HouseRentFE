@@ -14,7 +14,7 @@ function Footer () {
                             Gielow Corp
                         </Link>
                     </div>
-                    <small className='website-rights'>Gielow Corp ® 2022</small>
+                    <small className='website-rights'>Gielow Corp ® 2024</small>
                     <div className='social-icons'>
                         <Link
                             className='social-icon-link facebook'

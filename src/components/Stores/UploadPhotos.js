@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Box, Button, FormLabel,FormGroup }  from '@mui/material'
 import IconButton from '@mui/material/IconButton';
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
-import Gallery from '../Gallery'
+import Gallery from '../Utils/Gallery'
 
 const NewHomeFormPhotos = () => {
   const [photos,setPhotos] = useState([])

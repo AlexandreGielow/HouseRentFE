@@ -42,13 +42,13 @@ const useLoginForm = (loginForm) => {
     event.preventDefault()
     setDataIsCorrect(true)
     SendLogin(values)
-  }, [setErrors, setDataIsCorrect, SendLogin, useCallback])
+  }, [values])
 
   useEffect(() => {
     if (Object.keys(errors).length === 0 && dataIsCorrect) {
       loginForm(true)
     }
-  }, [errors])
+  }, [dataIsCorrect, errors, loginForm])
   return { handleChange, handleFormSubmit, errors, values }
 }
 

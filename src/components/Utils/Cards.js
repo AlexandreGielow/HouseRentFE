@@ -1,5 +1,5 @@
 import React, {useState } from 'react'
-import { FetchProperties } from './properties/FetchProperties'
+import { FetchStores } from '../Stores/FetchStores'
 import './Cards.css'
 import './CardItem.css'
 import Maps from './Maps'
@@ -29,7 +29,7 @@ function Cards () {
               value={searchCity}
               onChange={(event) => setSearchCity(event.target.value)} />   
           </FormControl>
-            <FetchProperties
+            <FetchStores
             filter={searchFilter}/>
         </div>
         <div className='maps'>
