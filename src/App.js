@@ -6,10 +6,11 @@ import Home from './pages/Stores/NewStoreForm'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import SignUpForm from './pages/LoginRegister/SignUpForm'
 import FetchStores from './components/Stores/FetchStores'
-import LoginForm from './pages/LoginRegister/LoginForm'
+import LoginForm from './pages/LoginRegister/LoginForm.tsx'
 import NewStoreForm from './pages/Stores/NewStoreForm'
 import NewOrderForm from './pages/Orders/NewOrderForm'
 import NewProductForm from './pages/Products/NewProductForm'
+import ProductsList from './pages/Products/ProductsList.tsx'
 import Cards from './components/Utils/Cards'
 import 'fontsource-roboto'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
@@ -40,6 +41,7 @@ function App () {
             <Route path='/NewStoreForm' element={<NewStoreForm/>} />
             <Route path='/NewOrderForm' element={<NewOrderForm/>} />
             <Route path='/ProductsRegister' element={<NewProductForm/>} />
+            <Route path='/ProductsList' element={<ProductsList/>} />
             <Route path='/FindHome' element={<Cards/>}/>
             <Route path='./components/SignUpForm' element={<SignUpForm/>} />
             <Route path='./components/FetchStores' element={<FetchStores/>}/>

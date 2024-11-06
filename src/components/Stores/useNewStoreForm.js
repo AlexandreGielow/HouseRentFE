@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 //import WebService from '../../api/WebService'
 
-const useNewStoreForm = (storeForm) => {
+const useNewStoreForm = () => {
   const [values, setValues] = useState({
     Name: ''
   })
@@ -12,10 +12,6 @@ const useNewStoreForm = (storeForm) => {
       [event.target.name]: event.target.value
     })
   }
-
-  //const handleFormSubmit = () =>{
-  //  WebService(values,"Property")
-  //} 
 
   useEffect(() => {
   }, [])

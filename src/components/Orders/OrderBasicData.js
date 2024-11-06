@@ -13,7 +13,7 @@ const OrderFormBasic = ({ homeForm }) => {
   )
 
   return (
-        <Box className="container" sx={{background: 'black', display: 'flex', flexDirection: 'column', justifyContent: 'center' ,borderRadius:3}}> 
+        <Box className="container" sx={{background: 'black', display: 'flex', minWidth: '550px', flexDirection: 'column', justifyContent: 'center' ,borderRadius:3}}> 
             <h2 className="label">Inform some basic data</h2>
         <FormGroup>
             <FormLabel sx={{color:'white'}}>Store to Deliver</FormLabel>

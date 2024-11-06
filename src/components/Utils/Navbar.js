@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux'
 import { Button } from '@mui/material'
 import LoginIcon from '@mui/icons-material/LockOpen'
 import NewUserIcon from '@mui/icons-material/AddCircle'
+import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import Grow from '@mui/material/Grow';
 import Paper from '@mui/material/Paper';
@@ -14,16 +15,13 @@ import MenuList from '@mui/material/MenuList';
 import Stack from '@mui/material/Stack';
 
 function Navbar() {
-    const currentName = useSelector(state => state.user.name)
     const userLogged = useSelector(state => state.user.isLogged)
     const [click, setClick] = useState(false)
     const handleClick = () => setClick(!click)
     const closeMobileMenu = () => setClick(false)
 
-    const [elements, setElements] = useState('SignUpForm')
-    function addElements() {
-        setElements([...elements, 'SignUpForm'])
-    }
+
+
     const [elements2, setElements2] = useState('LoginForm')
     function addElements2() {
         setElements2([...elements2, 'LoginForm'])
@@ -148,8 +146,18 @@ function Navbar() {
                                                             startIcon={<NewUserIcon />}
                                                             size='small'
                                                             style={{ fontSize: 12 }}
-                                                            onClick={addElements}
-                                                            value='/ProductsRegister'>Products</Button>
+                                                            onClick={handleClose}
+                                                            value='/ProductsRegister'>New Product</Button>
+                                                    </Link>
+                                                    <Link to='/ProductsList'>
+                                                        <Button
+                                                            variant='contained'
+                                                            color='secondary'
+                                                            startIcon={<FormatListBulletedIcon />}
+                                                            size='small'
+                                                            style={{ fontSize: 12 }}
+                                                            onClick={handleClose}
+                                                            value='/ProductsRegister'>Products List</Button>
                                                     </Link>
                                                     <MenuItem onClick={handleClose}>My account</MenuItem>
                                                     <MenuItem onClick={handleClose}>Logout</MenuItem>

@@ -3,7 +3,7 @@ import SignUpValidation from './SignUpValidation'
 import { useDispatch } from 'react-redux'
 import { changeUser } from '../../reducers/userLogged'
 
-const useSubmitForm = (submitForm) => {
+const useSubmitForm = (submitForm:any) => {
   const dispatch = useDispatch()
   const [errors, setErrors] = useState({})
   const [values, setValues] = useState({
@@ -18,7 +18,7 @@ const useSubmitForm = (submitForm) => {
 
 
 
-  const handleChange = (event) => {
+  const handleChange = (event:any) => {
     setValues({
       ...values,
       [event.target.name]: event.target.value

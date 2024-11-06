@@ -1,5 +1,5 @@
 import React from 'react'
-import useLoginForm from '../../components/LoginRegister/useLoginForm'
+import useLoginForm from '../../components/LoginRegister/useLoginForm.tsx'
 import '../../App.css'
 import './SignUpForm.css'
 import { Link } from 'react-router-dom'
@@ -12,7 +12,6 @@ const LoginForm = ({ loginForm }) => {
   const { handleChange, handleFormSubmit, values } = useLoginForm(
     loginForm
   )
-
   return (
     <Box className="container" sx={ {background: 'black', display: 'flex', 'flex-direction': 'column', 'justify-content': 'center', borderRadius:3} }>
     <div className="app-wrapper">

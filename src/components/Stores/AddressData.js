@@ -8,7 +8,7 @@ const NewHomeFormAddress = ({ homeForm }) => {
   )
 
   return (
-    <Box className="container" sx={ {background: 'black', display: 'flex', flexDirection: 'column',justifyContent: 'center' ,borderRadius:3} }>
+    <Box className="container" sx={ {background: 'black', display: 'flex',minWidth: '550px', flexDirection: 'column',justifyContent: 'center' ,borderRadius:3} }>
         <FormGroup>
             <FormLabel sx={{color:'white'}}>Postal Code</FormLabel>
             <TextField

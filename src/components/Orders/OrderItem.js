@@ -31,7 +31,7 @@ const NewHomeFormBasic = ({ homeForm }) => {
   ];
 
   return (
-        <Box className="container" sx={{background: 'black', display: 'flex', flexDirection: 'column', justifyContent: 'center' ,borderRadius:3}}> 
+        <Box className="container" sx={{background: 'black', display: 'flex',  minWidth: '550px',flexDirection: 'column', justifyContent: 'center' ,borderRadius:3}}> 
          <h2 className="label">Add the desired items</h2>
         <FormGroup>               
             <FormLabel sx={{color:'white'}}>Item</FormLabel>

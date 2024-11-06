@@ -31,7 +31,7 @@ const NewHomeFormBasic = ({ homeForm }) => {
     { id: 2, item: 'Cookie', quantity: 2},
   ];
   return (
-        <Box className="container" sx={{background: 'black', display: 'flex', flexDirection: 'column', justifyContent: 'center' ,borderRadius:3}}> 
+        <Box className="container" sx={{background: 'black', display: 'flex', minWidth: '550px', flexDirection: 'column', justifyContent: 'center' ,borderRadius:3}}> 
         <FormGroup>      
         <FormLabel sx={{color:'white'}}>Store selected to Deliver</FormLabel>
             <Select 
