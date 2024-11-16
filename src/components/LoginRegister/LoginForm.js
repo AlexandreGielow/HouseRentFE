@@ -8,15 +8,9 @@ const LoginForm = () => {
     setFormIsSubmited(true)
   }
   return (
-        <div>
-           {!formIsSubmitted
-             ? (
-            <SignUpForm loginForm={loginForm}/>
-               )
-             : (
-            <SignUpFormSuccess/>
-               )}
-        </div>
+        <>
+           {!formIsSubmitted ? (<SignUpForm loginForm={loginForm}/>):(<SignUpFormSuccess/>)}
+        </>
   )
 }
 export default LoginForm

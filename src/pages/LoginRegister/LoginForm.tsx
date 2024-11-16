@@ -1,5 +1,5 @@
 import React from 'react'
-import useLoginForm from '../../components/LoginRegister/useLoginForm.tsx'
+import useLoginForm from '../../components/LoginRegister/useLoginForm'
 import '../../App.css'
 import './SignUpForm.css'
 import { Link } from 'react-router-dom'
@@ -8,7 +8,11 @@ import Button from '@mui/material/Button'
 import LoginIcon from '@mui/icons-material/LockOpen'
 import { Box, FormControl, FormGroup } from '@mui/material'
 
-const LoginForm = ({ loginForm }) => {
+interface LoginFormProps {
+  loginForm: any; // Replace 'any' with the appropriate type if known
+}
+
+const LoginForm: React.FC<LoginFormProps> = ({ loginForm }) => {
   const { handleChange, handleFormSubmit, values } = useLoginForm(
     loginForm
   )
@@ -20,10 +24,10 @@ const LoginForm = ({ loginForm }) => {
       <FormControl sx={{ m: 1, minWidth: 120, 'background-color': 'black'}} margin='normal'  variant="filled">
         <FormGroup>
           <TextField
-              name="Email" 
-              value={values.Email} 
+              name="UserName" 
+              value={values.UserName} 
               onChange={handleChange}
-              type='email'
+              type='text'
               label='Login'
               placeholder='Login'
               sx={{color:'white'}}

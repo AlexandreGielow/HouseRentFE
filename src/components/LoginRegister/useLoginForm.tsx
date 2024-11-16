@@ -1,22 +1,18 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useContext } from 'react'
 import SignUpValidation from './SignUpValidation'
-import { useDispatch } from 'react-redux'
-import { changeUser } from '../../reducers/userLogged'
+import {User, UserContext } from '../../context/ContextProvider'
 
 const useSubmitForm = (submitForm:any) => {
-  const dispatch = useDispatch()
+  
   const [errors, setErrors] = useState({})
   const [values, setValues] = useState({
     Name: '',
     SureName: '',
+    UserName:'',
     Email: '',
-    Password: '',
-    ConfirmPassword: ''
+    Password: ''
   })
-
   const [dataIsCorrect, setDataIsCorrect] = useState(false)
-
-
 
   const handleChange = (event:any) => {
     setValues({
@@ -25,17 +21,15 @@ const useSubmitForm = (submitForm:any) => {
     })
   }
 
-
-
-  const handleFormSubmit = useCallback((event) => {
-    const SendLogin = async (values) => {
+  const { user, setUser } = useContext(UserContext);
+  
+  const handleFormSubmit = useCallback((event: { preventDefault: () => void }) => {
+    const SendLogin = async (values:any) => {
       const requestOptions = {
         method: 'POST',
         body: JSON.stringify({
-          Email: values.Email,
-          Name: '',
-          Password: values.Password,
-          SureName: ''
+          username: values.UserName,
+          password: values.Password,
         }),
         json: true,
         headers: new Headers({
@@ -45,22 +39,31 @@ const useSubmitForm = (submitForm:any) => {
           'Content-Type': 'application/json'
         })
       }
-      const response = await fetch('https://localhost:44307/api/v1/Person/authenticate', requestOptions)
+      const response = await fetch('https://localhost:7023/api/Auth/Login', requestOptions)
       const responseData = await response.json()
+      setValues({
+        Name: 'Alex',
+        SureName: 'Gielow',
+        UserName:'alexgielow',
+        Email: 'alex.gielow@gmail.com',
+        Password: 'cagada123'
+      });
+      const newUser: User = {
+        name: 'John Doe',
+        email: 'johndoe@example.com',
+        isLogged: true
+      };
+    setUser(newUser);
+
+      console.log(user)
       localStorage.setItem('token', responseData.token)
-      dispatch(changeUser(responseData.person.name))
     }
-    const handleLogin = () => {
-      // eslint-disable-next-line no-restricted-globals
-      dispatch(changeUser(name))
-    }
-    
+      
     event.preventDefault()
     setErrors(SignUpValidation(values))
     setDataIsCorrect(true)
     SendLogin(values)
-    handleLogin()
-  }, [setErrors, setDataIsCorrect, values, dispatch])
+  }, [setErrors, setDataIsCorrect, values,setUser,user])
 
   useEffect(() => {
     if (Object.keys(errors).length === 0 && dataIsCorrect) {
