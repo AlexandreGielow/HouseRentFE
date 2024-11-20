@@ -1,5 +1,21 @@
-const SignUpValidation = (values) => {
-  const errors = {}
+interface FormErrors {
+  Name?: string;
+  Surename?: string;
+  Email?: string;
+  Password?: string;
+  ConfirmPassword?: string;
+}
+
+interface FormValues {
+  Name: string;
+  Surename: string;
+  Email: string;
+  Password: string;
+  ConfirmPassword: string;
+}
+
+const SignUpValidation = (values: FormValues): FormErrors => {
+  const errors: FormErrors = {}
   if (!values.Name) {
     errors.Name = 'Name is required'
   }

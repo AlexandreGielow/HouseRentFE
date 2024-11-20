@@ -11,8 +11,12 @@ const useNewOrderForm = () => {
       [event.target.name]: event.target.value
     })
   }
+  const handleFormSubmit = (event) => {
+    event.preventDefault()
+    console.log('Form submitted')
+  }
 
-  return { handleChange, values }
+  return { handleChange,handleFormSubmit, values }
 }
 
 export default useNewOrderForm

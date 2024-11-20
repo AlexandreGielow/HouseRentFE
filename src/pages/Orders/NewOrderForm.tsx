@@ -6,10 +6,12 @@ import useNewOrderForm from '../../components/Orders/useNewOrderForm'
 import Button from '@mui/material/Button'
 import { FormControl, Box } from '@mui/material'
 
-const NewOrderForm = ({ orderForm }) => {
-  const { handleFormSubmit } = useNewOrderForm(
-    orderForm
-  )
+interface OrderFormProps {
+  orderForm: Record<string, unknown>
+}
+
+const NewOrderForm = ({ orderForm }: OrderFormProps) => {
+  const {handleFormSubmit} = useNewOrderForm()
 
   const [stage, setStage] = useState(0)
 
@@ -18,9 +20,9 @@ const NewOrderForm = ({ orderForm }) => {
         <Box  sx={{borderRadius:3 , backgroundColor: 'black', color: 'white', minWidth: '550px', margin: 'auto', marginTop: '10px', padding: '30px'}} maxWidth='sm' >
           <h2 className="label">Fill the fields to create a new Order - Step {stage+1} of 3</h2>
         </Box>
-        {stage === 0 && <OrderBasicData/>}
-        {stage === 1 && <OrderItem/>}
-        {stage === 2 && <OrderSummary/>}
+        {stage === 0 && <OrderBasicData homeForm={orderForm}/>}
+        {stage === 1 && <OrderItem homeForm={orderForm}/>}
+        {stage === 2 && <OrderSummary homeForm={orderForm}/>}
              {stage > 0 &&  <Button 
                         variant='contained' 
                         color='secondary'                         

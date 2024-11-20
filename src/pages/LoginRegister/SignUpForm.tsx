@@ -1,87 +1,72 @@
-import React from 'react'
+import { TextField, Box, FormLabel, FormGroup, Button }  from '@mui/material'
 import useSubmitForm from '../../components/LoginRegister/useSubmitForm'
 import '../../App.css'
 import './SignUpForm.css'
 
-const SignUpForm = ({ submitForm }) => {
+interface AccountSubmitForm {
+  Name: string;
+  SureName: string;
+  Email: string;
+  Password: string;
+  ConfirmPassword: string;
+}
+
+const SignUpForm = ({AccountForm}:{AccountForm: AccountSubmitForm }) => {
   const { handleChange, handleFormSubmit, values, errors } = useSubmitForm(
-    submitForm
+        AccountForm
   )
   return (
-    <div className="hero-container">
-      <div className="container">
-        <div className="app-wrapper">
-          <h2 className="lable">Create your account!</h2>
-        </div>
-        <form className="form-wrapper">
-          <div className="name">
-            <label className="label">Name</label>
-            <input
-              className="input"
-              type= "text"
-              name="Name"
-              value={values.Name}
-              onChange={handleChange}
-            />
-            {errors.Name && <p className="error">{errors.Name}</p>}
-          </div>
-          <div className="name">
-            <label className="label">Sure Name</label>
-            <input
-              className="input"
-              type="text"
-              name="SureName"
-              value={values.SureName}
-              onChange={handleChange}
-            />
-            {errors.SureName && <p className="error">{errors.SureName}</p>}
-          </div>
-          <div className="email">
-            <label className="label">E-mail</label>
-            <input
-              className="input"
-              type="email"
-              name="Email"
-              value={values.Email}
-              onChange={handleChange}
-            />
-            {errors.Email && <p className="error">{errors.Email}</p>}   
-
-          </div>
-          <div className="password">
-            <label className="label">Password</label>
-            <input
-              className="input"
-              type="password"
-              name="Password"   
-
-              value={values.Password}
-              onChange={handleChange}
-            />
-            {errors.Password && <p className="error">{errors.Password}</p>}
-          </div>
-          <div className="password">   
-
-            <label className="label">Confirm Password</label>
-            <input
-              className="input"
-              type="password"
-              name="ConfirmPassword"
-              value={values.ConfirmPassword}
-              onChange={handleChange}
-            />
-            {errors.ConfirmPassword && <p className="error">{errors.ConfirmPassword}</p>}
-          </div>
-          <div className="button">
-            <button className="btn--outline" onClick={handleFormSubmit}>
-              Create Account
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
+    <Box className="container" sx={ {background: 'black', display: 'flex',minWidth: '550px', flexDirection: 'column',justifyContent: 'center' ,borderRadius:3} }>
+    <FormGroup>
+        <FormLabel sx={{color:'white'}}>Postal Code</FormLabel>
+        <TextField
+                type='text'
+                placeholder='36925'
+                variant='standard'
+                sx={{marginBottom:'10px'}}
+                value={AccountForm.Name} 
+                onChange={handleChange}/>
+        <FormLabel sx={{color:'white'}}>Postal Code</FormLabel>
+        <TextField
+                type='text'
+                placeholder='36925'
+                variant='standard'
+                sx={{marginBottom:'10px'}}
+                value={AccountForm.SureName} 
+                onChange={handleChange}/>
+        <FormLabel sx={{color:'white'}}>Postal Code</FormLabel>
+        <TextField
+                type='text'
+                placeholder='36925'
+                variant='standard'
+                sx={{marginBottom:'10px'}}
+                value={AccountForm.Email} 
+                onChange={handleChange}/>
+        <FormLabel sx={{color:'white'}}>Postal Code</FormLabel>
+        <TextField
+                type='text'
+                placeholder='36925'
+                variant='standard'
+                sx={{marginBottom:'10px'}}
+                value={AccountForm.Password} 
+                onChange={handleChange}/>
+        <FormLabel sx={{color:'white'}}>Postal Code</FormLabel>
+        <TextField
+                type='text'
+                placeholder='36925'
+                variant='standard'
+                sx={{marginBottom:'10px'}}
+                value={AccountForm.ConfirmPassword} 
+                onChange={handleChange}/>
+        <Button 
+                variant='contained' 
+                color='primary'                         
+                size='large' 
+                type="submit"
+               >Finish and Send</Button>
+      </FormGroup>
+    </Box>
   );
 };
-
 
 export default SignUpForm

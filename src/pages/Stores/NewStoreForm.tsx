@@ -1,26 +1,47 @@
-import React, { useState } from 'react'
+import  { useState } from 'react'
 import AddressData from '../../components/Stores/AddressData'
-import UploadPhotos from '../../components/Stores/UploadPhotos'
 import StoreBasicData from '../../components/Stores/StoreBasicData'
 import useNewStoreForm from '../../components/Stores/useNewStoreForm'
 import Button from '@mui/material/Button'
 import { FormControl, Box } from '@mui/material'
 
-const NewStoreForm = ({ storeForm }) => {
-  const { handleFormSubmit } = useNewStoreForm(
-    storeForm
-  )
+interface StoreForm {
+  Store: number;
+  Status: number;
+  Description: string;
+  ShippingType: number;
+  ExpectedDeliveryDate: Date;
+}
+interface AddressForm {
+  Name: string;
+  PostalCode: string;
+  Country: string;
+  State: string;
+  City: string;
+  Region: string;
+  Address: string;
+  Number: string;
+  Complement: string;
+}
+interface NewStoreFormProps {
+  storeForm: StoreForm;
+  addressForm: AddressForm;
+}
+
+
+const NewStoreForm = ({ storeForm,addressForm }: NewStoreFormProps) => {
+  const { handleFormSubmit } = useNewStoreForm()
 
   const [stage, setStage] = useState(0)
+
 
   return (
       <FormControl sx={{ m: 1, minWidth: 120 }}   variant='standard'>
         <Box  sx={{borderRadius:3 , backgroundColor: 'black', color: 'white', minWidth: '550px', margin: 'auto', marginTop: '10px', padding: '30px'}} maxWidth='sm' >
           <h2 className="label">Fill the fields to create a new Home Step {stage+1} of 6</h2>
         </Box>
-        {stage === 0 && <StoreBasicData/>}
-        {stage === 1 && <AddressData/>}
-        {stage === 5 && <UploadPhotos/>}
+        {stage === 0 && <StoreBasicData storeForm={storeForm}/>}
+        {stage === 1 && <AddressData addressForm={addressForm}/>}
              {stage > 0 &&  <Button 
                         variant='contained' 
                         color='secondary'                         

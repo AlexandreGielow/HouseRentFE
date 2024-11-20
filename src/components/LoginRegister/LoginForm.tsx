@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import SignUpForm from './SignUpForm'
+import SignUpForm from '../../pages/LoginRegister/SignUpForm'
 import SignUpFormSuccess from './SignUpFormSuccess'
 
 const LoginForm = () => {
@@ -9,7 +9,7 @@ const LoginForm = () => {
   }
   return (
         <>
-           {!formIsSubmitted ? (<SignUpForm loginForm={loginForm}/>):(<SignUpFormSuccess/>)}
+           {!formIsSubmitted ? (<SignUpForm submitForm={loginForm}/>):(<SignUpFormSuccess/>)}
         </>
   )
 }

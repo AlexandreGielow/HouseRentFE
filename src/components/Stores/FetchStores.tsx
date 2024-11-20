@@ -1,8 +1,23 @@
 import React, { useEffect, useState } from 'react'
 import CardItem from '../Utils/CardItem'
 
-export const FetchStores = ({filter}) => {
-  const [Stores, setStores] = useState([])
+interface Store {
+  id: number;
+  name: string;
+  type: string;
+  rooms: number;
+  size: number;
+  value: number;
+  startRent: string;
+  endRent: string;
+  address: {
+    city: string;
+    region: string;
+  };
+}
+
+export const FetchStores = ({filter}: {filter: string}) => {
+  const [Stores, setStores] = useState<Store[]>([])
   useEffect(() => {
     const requestOptions = {
       method: 'GET',

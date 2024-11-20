@@ -1,10 +1,19 @@
-import React from 'react'
 import useNewHomeForm from './useNewStoreForm'
 import { TextField, Box, FormLabel, FormGroup }  from '@mui/material'
+interface AddressForm {
+    Name: string;
+    PostalCode: string;
+    Country: string;
+    State: string;
+    City: string;
+    Region: string;
+    Address: string;
+    Number: string;
+    Complement: string;
+}
 
-const NewHomeFormAddress = ({ homeForm }) => {
-  const { handleChange, values } = useNewHomeForm(
-    homeForm
+const NewHomeFormAddress = ({addressForm}:{addressForm: AddressForm }) => {
+  const { handleChange } = useNewHomeForm(
   )
 
   return (
@@ -16,7 +25,7 @@ const NewHomeFormAddress = ({ homeForm }) => {
                 placeholder='36925'
                 variant='standard'
                 sx={{marginBottom:'10px'}}
-                value={values.PostalCode} 
+                value={addressForm.PostalCode} 
                 onChange={handleChange}/>
             <FormLabel sx={{color:'white'}}>Country</FormLabel>
             <TextField
@@ -24,7 +33,7 @@ const NewHomeFormAddress = ({ homeForm }) => {
                 placeholder='United States'
                 variant='standard'
                 sx={{marginBottom:'10px'}}
-                value={values.Country} 
+                value={addressForm.Country} 
                 onChange={handleChange}/>  
             <FormLabel sx={{color:'white'}}>State</FormLabel>            
             <TextField
@@ -32,7 +41,7 @@ const NewHomeFormAddress = ({ homeForm }) => {
                 placeholder='Virginia'
                 variant='standard'
                 sx={{marginBottom:'10px'}}
-                value={values.State} 
+                value={addressForm.State} 
                 onChange={handleChange}/>
                 <FormLabel sx={{color:'white'}}>City</FormLabel>    
             <TextField
@@ -40,7 +49,7 @@ const NewHomeFormAddress = ({ homeForm }) => {
                 placeholder='Alexandria'
                 variant='standard'
                 sx={{marginBottom:'10px'}}
-                value={values.City} 
+                value={addressForm.City} 
                 onChange={handleChange}/>  
             <FormLabel sx={{color:'white'}}>Region</FormLabel>                
             <TextField
@@ -48,7 +57,7 @@ const NewHomeFormAddress = ({ homeForm }) => {
                 placeholder='Eisenhower Valley'
                 variant='standard'
                 sx={{marginBottom:'10px'}}
-                value={values.Region} 
+                value={addressForm.Region} 
                 onChange={handleChange}/>  
             <FormLabel sx={{color:'white'}}>Address</FormLabel> 
             <TextField
@@ -56,7 +65,7 @@ const NewHomeFormAddress = ({ homeForm }) => {
                 placeholder='141 SW Washington Street'
                 variant='standard'
                 sx={{marginBottom:'10px'}}
-                value={values.Address} 
+                value={addressForm.Address} 
                 onChange={handleChange}/> 
             <FormLabel sx={{color:'white'}}>Number</FormLabel> 
             <TextField
@@ -64,7 +73,7 @@ const NewHomeFormAddress = ({ homeForm }) => {
                 placeholder='1234'
                 variant='standard'
                 sx={{marginBottom:'10px'}}
-                value={values.Number} 
+                value={addressForm.Number} 
                 onChange={handleChange}/>  
             <FormLabel sx={{color:'white'}}>Complement</FormLabel>                                                     
             <TextField
@@ -74,7 +83,7 @@ const NewHomeFormAddress = ({ homeForm }) => {
                 multiline
                 rows={4}
                 sx={{marginBottom:'10px'}}
-                value={values.Complement} 
+                value={addressForm.Complement} 
                 onChange={handleChange}/>   
          </FormGroup>          
     </Box>

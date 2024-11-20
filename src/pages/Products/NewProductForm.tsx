@@ -4,13 +4,13 @@ import { FormControl, Box, Button } from '@mui/material'
 import useNewProductForm from '../../components/Products/useNewProductForm'
 
 const NewProductForm = () => {
-  const {handleFormSubmit } = useNewProductForm()
+  const {handleFormSubmit, values } = useNewProductForm()
   return (
       <FormControl sx={{ m: 1, minWidth: 120 }}   variant='standard'>
         <Box  sx={{borderRadius:3 , backgroundColor: 'black', color: 'white', minWidth: '550px', margin: 'auto', marginTop: '10px', padding: '30px'}} maxWidth='sm' >
           <h2 className="label">Fill the fields to create a new Product </h2>
         </Box>
-          <ProductBasicData/>
+          <ProductBasicData productForm={values}/>
           <Button 
                 variant='contained' 
                 color='primary'                         

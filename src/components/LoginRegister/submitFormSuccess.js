@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import SignUpForm from './SignUpForm'
 import SignUpFormSuccess from './SignUpFormSuccess'
 
-const submitForm = () => {
+const SubmitForm = () => {
   const [formIsSubmitted, setFormIsSubmited] = useState(false)
   const submitForm = () => {
     setFormIsSubmited(true)
@@ -19,4 +19,4 @@ const submitForm = () => {
         </div>
   )
 }
-export default submitForm
+export default SubmitForm
