@@ -28,8 +28,8 @@ function Navbar() {
         setOpen((prevOpen) => !prevOpen);
     };
 
-    const handleClose = (event) => {
-        if (anchorRef.current && anchorRef.current.contains(event.target)) {
+    const handleClose = (event: MouseEvent | TouchEvent) => {
+        if (anchorRef.current && anchorRef.current.contains(event.target as Node)) {
             return;
         }
         setOpen(false);
@@ -55,7 +55,7 @@ function Navbar() {
                         <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
                     </div>
                     <ul className={click ? 'nav-menu active' : 'nav-menu'}>
-                    {!user && <Link to='/LoginForm'>
+                    {!user.user && <Link to='/LoginForm'>
                         <Button
                             variant='contained'
                             startIcon={<LoginIcon />}
@@ -65,7 +65,7 @@ function Navbar() {
                             //onClick={addElements2}
                             value='/LoginForm'>Login</Button>
                     </Link>}
-                        {user?.isLogged && <li className='nav-item'>
+                        {user?.user?.isLogged && <li className='nav-item'>
                             <Link
                                 to='/NewOrderForm'
                                 className='nav-links'
@@ -73,7 +73,7 @@ function Navbar() {
                                 New Order
                             </Link>
                         </li>}
-                        {user?.isLogged && <li className='nav-item'>
+                        {user?.user?.isLogged && <li className='nav-item'>
                             <Link
                                 to='/NewOrderForm'
                                 className='nav-links'
@@ -91,7 +91,7 @@ function Navbar() {
                         </li>
                     </ul>
                    
-                    {user?.isLogged && <Stack direction="row" spacing={2}>
+                    {user?.user?.isLogged && <Stack direction="row" spacing={2}>
                         <div>
                             <Button
                                 ref={anchorRef}
@@ -129,7 +129,6 @@ function Navbar() {
                                                             startIcon={<NewUserIcon />}
                                                             size='small'
                                                             style={{ fontSize: 12 }}
-                                                            onClick={handleClose}
                                                             value='/ProductsRegister'>New Product</Button>
                                                     </Link>
                                                     <Link to='/ProductsList'>
@@ -139,11 +138,10 @@ function Navbar() {
                                                             startIcon={<FormatListBulletedIcon />}
                                                             size='small'
                                                             style={{ fontSize: 12 }}
-                                                            onClick={handleClose}
                                                             value='/ProductsRegister'>Products List</Button>
                                                     </Link>
-                                                    <MenuItem onClick={handleClose}>My account</MenuItem>
-                                                    <MenuItem onClick={handleClose}>Logout</MenuItem>
+                                                    <MenuItem>My account</MenuItem>
+                                                    <MenuItem>Logout</MenuItem>
                                                 </MenuList>
                                             </ClickAwayListener>
                                         </Paper>

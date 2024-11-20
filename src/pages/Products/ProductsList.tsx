@@ -1,7 +1,7 @@
 import React from 'react'
 import { FormControl, Box ,Button,TextField,FormGroup} from '@mui/material'
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
-import useProductsList from '../../components/Products/useProductsList.tsx'
+import useProductsList from '../../components/Products/useProductsList'
 
 
 

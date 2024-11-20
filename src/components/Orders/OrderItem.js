@@ -5,10 +5,8 @@ import { TextField, Box ,Select, MenuItem, FormLabel, FormGroup}  from '@mui/mat
 import Button from '@mui/material/Button'
 import { DataGrid } from '@mui/x-data-grid';
 
-const NewHomeFormBasic = ({ homeForm }) => {
-  const { handleChange,  values } = useNewHomeForm(
-    homeForm
-  )
+const OrderItems = () => {
+  const { handleChange,  values } = useNewHomeForm()
   const columns = [
     {
       field: 'item',
@@ -87,4 +85,4 @@ const NewHomeFormBasic = ({ homeForm }) => {
   )
 }
 
-export default NewHomeFormBasic
+export default OrderItems

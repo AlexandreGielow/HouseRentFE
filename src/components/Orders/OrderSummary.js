@@ -5,10 +5,8 @@ import { Box ,Select, MenuItem, FormLabel, FormGroup}  from '@mui/material'
 import { DataGrid } from '@mui/x-data-grid';
 
 
-const NewHomeFormBasic = ({ homeForm }) => {
-  const { handleChange,  values } = useNewHomeForm(
-    homeForm
-  )
+const NewHomeFormBasic = () => {
+  const {values} = useNewHomeForm()
 
   const columns = [
     {
@@ -39,8 +37,7 @@ const NewHomeFormBasic = ({ homeForm }) => {
                 disabled='true'
                 label='Type'
                 value={values.Store} 
-                sx={{marginBottom:'10px', marginTop:'1px'}}
-                onChange={handleChange}>
+                sx={{marginBottom:'10px', marginTop:'1px'}}>
                     <MenuItem value = {0}>Bloor & Younge</MenuItem>
                     <MenuItem value = {1}>Dundas</MenuItem>
                     <MenuItem value = {2}>WaterFront</MenuItem>
@@ -51,8 +48,7 @@ const NewHomeFormBasic = ({ homeForm }) => {
                 label='Type'
                 disabled='true'
                 value={values.ShippingType} 
-                sx={{marginBottom:'10px', marginTop:'1px'}}
-                onChange={handleChange}>
+                sx={{marginBottom:'10px', marginTop:'1px'}}>
                     <MenuItem value = {0}>Standard</MenuItem>
                     <MenuItem value = {1}>Express</MenuItem>
                     <MenuItem value = {2}>ByHand</MenuItem>

@@ -8,7 +8,7 @@ interface UserContextType {
 export interface User {
     name: string;
     email: string;
-    isLogged: boolean
+    isLogged: boolean | null;
 }
 
 export const UserContext = createContext<UserContextType>({

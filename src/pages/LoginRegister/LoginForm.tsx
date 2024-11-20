@@ -8,14 +8,10 @@ import Button from '@mui/material/Button'
 import LoginIcon from '@mui/icons-material/LockOpen'
 import { Box, FormControl, FormGroup } from '@mui/material'
 
-interface LoginFormProps {
-  loginForm: any; // Replace 'any' with the appropriate type if known
-}
 
-const LoginForm: React.FC<LoginFormProps> = ({ loginForm }) => {
-  const { handleChange, handleFormSubmit, values } = useLoginForm(
-    loginForm
-  )
+
+const LoginForm = () => {
+  const { handleChange, handleFormSubmit,values} = useLoginForm()
   return (
     <Box className="container" sx={ {background: 'black', display: 'flex', 'flex-direction': 'column', 'justify-content': 'center', borderRadius:3} }>
     <div className="app-wrapper">

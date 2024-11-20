@@ -4,12 +4,17 @@ import {
     useEffect,
     useLayoutEffect,
     useState,
+    ReactNode
   } from 'react';
-  import React from 'react'
-  
+
   import api from '../../api';
   
-  const AuthContext = createContext(undefined);
+  interface AuthContextType {
+    token: string | null;
+    setToken: React.Dispatch<React.SetStateAction<string | null>>;
+  }
+  
+  const AuthContext = createContext<AuthContextType | undefined>(undefined);
   
   export const useAuth = () => {
     const authContext = useContext(AuthContext);
@@ -21,8 +26,8 @@ import {
     return authContext;
   };
   
-  const AuthProvider = ({ children }) => {
-    const [token, setToken] = useState();
+  const AuthProvider = ({ children }: { children: ReactNode }) => {
+    const [token, setToken] = useState<string | null>('');
   
     useEffect(() => {
       const fetchMe = async () => {
@@ -40,7 +45,7 @@ import {
     useLayoutEffect(() => {
       const authInterceptor = api.interceptors.request.use((config) => {
         config.headers.Authorization =
-          !config._retry && token
+          !(config as any)._retry && token
             ? `Bearer ${token}`
             : config.headers.Authorization;
         return config;

@@ -23,25 +23,38 @@ interface AddressForm {
   Number: string;
   Complement: string;
 }
-interface NewStoreFormProps {
-  storeForm: StoreForm;
-  addressForm: AddressForm;
-}
 
 
-const NewStoreForm = ({ storeForm,addressForm }: NewStoreFormProps) => {
+const NewStoreForm = () => {
   const { handleFormSubmit } = useNewStoreForm()
 
   const [stage, setStage] = useState(0)
-
+  const [storeValues, setStoreValues] = useState<StoreForm>({
+    Store: 0,
+    Status: 0,
+    Description: '',
+    ShippingType: 0,
+    ExpectedDeliveryDate: new Date()  
+  })
+  const [adressValues, setAdressValues] = useState<AddressForm>({
+    Name: '',
+    PostalCode: '',
+    Country: '',
+    State: '',
+    City: '',
+    Region: '',
+    Address: '',
+    Number: '',
+    Complement: ''
+  })
 
   return (
       <FormControl sx={{ m: 1, minWidth: 120 }}   variant='standard'>
         <Box  sx={{borderRadius:3 , backgroundColor: 'black', color: 'white', minWidth: '550px', margin: 'auto', marginTop: '10px', padding: '30px'}} maxWidth='sm' >
           <h2 className="label">Fill the fields to create a new Home Step {stage+1} of 6</h2>
         </Box>
-        {stage === 0 && <StoreBasicData storeForm={storeForm}/>}
-        {stage === 1 && <AddressData addressForm={addressForm}/>}
+        {stage === 0 && <StoreBasicData storeForm={storeValues}/>}
+        {stage === 1 && <AddressData addressForm={adressValues}/>}
              {stage > 0 &&  <Button 
                         variant='contained' 
                         color='secondary'                         

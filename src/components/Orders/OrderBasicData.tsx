@@ -2,15 +2,10 @@ import React from 'react'
 import useNewOrderForm from '../Orders/useNewOrderForm'
 import '../../App.css'
 import { TextField, Box ,Select, MenuItem, FormLabel, FormGroup}  from '@mui/material'
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
-import { DatePicker } from '@mui/x-date-pickers/DatePicker'
 
 
-const OrderFormBasic = ({ homeForm }) => {
-  const { handleChange,  values } = useNewOrderForm(
-    homeForm
-  )
+const OrderFormBasic = () => {
+  const { handleChangeBasic, basicData } = useNewOrderForm()
 
   return (
         <Box className="container" sx={{background: 'black', display: 'flex', minWidth: '550px', flexDirection: 'column', justifyContent: 'center' ,borderRadius:3}}> 
@@ -20,9 +15,9 @@ const OrderFormBasic = ({ homeForm }) => {
             <Select 
                 defaultValue={0}
                 label='Type'
-                value={values.Store} 
+                value={basicData.Store} 
                 sx={{marginBottom:'10px', marginTop:'1px'}}
-                onChange={handleChange}>
+                onChange={handleChangeBasic}>
                     <MenuItem value = {0}>Bloor & Younge</MenuItem>
                     <MenuItem value = {1}>Dundas</MenuItem>
                     <MenuItem value = {2}>WaterFront</MenuItem>
@@ -31,9 +26,9 @@ const OrderFormBasic = ({ homeForm }) => {
             <Select 
                 defaultValue={0}
                 label='Status'
-                value={values.Status} 
+                value={basicData.Status} 
                 sx={{marginBottom:'10px', marginTop:'1px'}}
-                onChange={handleChange}>
+                onChange={handleChangeBasic}>
                     <MenuItem value = {0}>Draft</MenuItem>
                     <MenuItem value = {1}>Ready</MenuItem>
             </Select>
@@ -43,29 +38,20 @@ const OrderFormBasic = ({ homeForm }) => {
                 placeholder='Send as soon as possible..'
                 variant='standard'
                 sx={{marginBottom:'10px'}}
-                value={values.Description} 
-                onChange={handleChange}/>   
+                value={basicData.Description} 
+                onChange={handleChangeBasic}/>   
             <FormLabel sx={{color:'white'}}>Shipping Type</FormLabel>
             <Select 
                 defaultValue={0}
                 label='Type'
-                value={values.ShippingType} 
+                value={basicData.ShippingType} 
                 sx={{marginBottom:'10px', marginTop:'1px'}}
-                onChange={handleChange}>
+                onChange={handleChangeBasic}>
                     <MenuItem value = {0}>Standard</MenuItem>
                     <MenuItem value = {1}>Express</MenuItem>
                     <MenuItem value = {2}>ByHand</MenuItem>
             </Select>            
-            <Box sx={{marginBottom:'10px'}}></Box>
-            <LocalizationProvider  dateAdapter={AdapterDateFns}>
-                <DatePicker
-                    label="Delivery Date expected"  
-                    name="DeliveryTo"                       
-                    value={values.ExpectedDeliveryDate} 
-                    onChange={handleChange}
-                    renderInput={(params) => <TextField {...params} />}
-                />
-            </LocalizationProvider> 
+            <Box sx={{marginBottom:'10px'}}></Box>        
             </FormGroup>     
         </Box>
                        

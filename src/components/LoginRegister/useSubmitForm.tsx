@@ -12,13 +12,13 @@ interface FormErrors {
   [key: string]: string;
 }
 
-const useSubmitForm = (submitForm: AccountSubmitForm) => {
+const useSubmitForm = () => {
   const [values, setValues] = useState<AccountSubmitForm>({
-    Name: submitForm.Name,
-    SureName: submitForm.SureName,
-    Email: submitForm.Email,
-    Password: submitForm.Password,
-    ConfirmPassword: submitForm.ConfirmPassword
+    Name: '',
+    SureName: '',
+    Email: '',
+    Password: '',
+    ConfirmPassword: ''
   })
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -50,14 +50,14 @@ const useSubmitForm = (submitForm: AccountSubmitForm) => {
     await fetch('https://localhost:44307/api/v1/Person', requestOptions)
   }
 
-  const handleFormSubmit = useCallback((event: React.FormEvent<HTMLFormElement>) => {
+  const handleFormSubmit = useCallback((event: { preventDefault: () => void }) => {
     event.preventDefault()
     setDataIsCorrect(true)
     SendSubmit(values)
   }, [values])
 
   useEffect(() => {
-
+    //colocar validação de erros aq
   }, [dataIsCorrect, errors])
   return { handleChange, handleFormSubmit, errors, values }
 }

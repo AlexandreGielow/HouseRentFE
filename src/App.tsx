@@ -1,22 +1,20 @@
 import React,{useState} from 'react'
-import Navbar from './components/Utils/Navbar.tsx'
+import Navbar from './components/Utils/Navbar'
 import './App.css'
 import './components/Utils/HeroSection.js'
-import Home from './pages/Stores/NewStoreForm.js'
 import { BrowserRouter as Router, Route, Routes, Outlet } from 'react-router-dom'
-import SignUpForm from './pages/LoginRegister/SignUpForm.js'
-import FetchStores from './components/Stores/FetchStores.js'
+import SignUpForm from './pages/LoginRegister/SignUpForm'
 import LoginForm from './pages/LoginRegister/LoginForm'
-import NewStoreForm from './pages/Stores/NewStoreForm.js'
-import NewOrderForm from './pages/Orders/NewOrderForm.js'
-import NewProductForm from './pages/Products/NewProductForm.js'
+import NewStoreForm from './pages/Stores/NewStoreForm'
+import NewOrderForm from './pages/Orders/NewOrderForm'
+import NewProductForm from './pages/Products/NewProductForm'
 import ProductsList from './pages/Products/ProductsList'
-import Cards from './components/Utils/Cards.js'
 import 'fontsource-roboto'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { grey, orange } from '@mui/material/colors'
-import Footer from './components/Utils/Footer.js'
+import Footer from './components/Utils/Footer'
 import { UserContext,User } from './context/ContextProvider'
+import Home from './pages/Home'
 
 const defaultTheme = createTheme({
 
@@ -39,20 +37,18 @@ function App () {
       <div className="hero-container">
         {!user && <Routes>
           {/* Public Routes */ }
-            <Route path='/' element={<Home storeForm={undefined}/>} />
-            <Route path='/SignUpForm' element={<SignUpForm submitForm={undefined}/>} />
-            <Route path='/LoginForm' element={<LoginForm loginForm={undefined}/>} />      
+            <Route path='/' element={<Home/>} />
+            <Route path='/SignUpForm' element={<SignUpForm />} />
+            <Route path='/LoginForm' element={<LoginForm />} />      
           </Routes>
         }
         {user && <Routes>
           {/* Protected Routes */ }
-            <Route path='/NewStoreForm' element={<NewStoreForm storeForm={undefined}/>} />
-            <Route path='/NewOrderForm' element={<NewOrderForm orderForm={undefined}/>} />
+            <Route path='/NewStoreForm' element={<NewStoreForm />} />
+            <Route path='/NewOrderForm' element={<NewOrderForm />} />
             <Route path='/ProductsRegister' element={<NewProductForm/>} />
             <Route path='/ProductsList' element={<ProductsList/>} />
-            <Route path='/FindHome' element={<Cards/>}/>
-            <Route path='./components/SignUpForm' element={<SignUpForm submitForm={undefined}/>} />
-            <Route path='./components/FetchStores' element={<FetchStores filter={undefined}/>}/>       
+            <Route path='./components/SignUpForm' element={<SignUpForm />} /> 
           </Routes>
         }
         <Outlet/>
