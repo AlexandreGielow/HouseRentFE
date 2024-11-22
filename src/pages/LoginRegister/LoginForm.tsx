@@ -6,14 +6,33 @@ import { Link } from 'react-router-dom'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 import LoginIcon from '@mui/icons-material/LockOpen'
-import { Box, FormControl, FormGroup } from '@mui/material'
-
+import { Box, FormControl, FormGroup} from '@mui/material'
+import Snackbar from '@mui/material/Snackbar';
+import IconButton from '@mui/material/IconButton';
+import CloseIcon from '@mui/icons-material/Close';
+import { defaultBox } from '../../components/Utils/Styles.js';
 
 
 const LoginForm = () => {
-  const { handleChange, handleFormSubmit,values} = useLoginForm()
+  const { handleChange, handleFormSubmit, values, errors,open,handleClose } = useLoginForm()
+
+  const action = (
+    <React.Fragment>
+      <Button color="secondary" size="small" onClick={handleClose}>
+        UNDO
+      </Button>
+      <IconButton
+        size="small"
+        aria-label="close"
+        color="warning"
+        onClick={handleClose}
+      >
+        <CloseIcon fontSize="small" />
+      </IconButton>
+    </React.Fragment>
+  );
   return (
-    <Box className="container" sx={ {background: 'black', display: 'flex', 'flex-direction': 'column', 'justify-content': 'center', borderRadius:3} }>
+    <Box className="container" sx={defaultBox }>
     <div className="app-wrapper">
       <h2 className="lable">Fill your credentials</h2>
     </div>
@@ -41,16 +60,22 @@ const LoginForm = () => {
               label='Password'
           />
           <div>
-          <Link to='/'>
+          <Link to={errors ? '/' : '/LoginForm'}>
               <Button 
               onClick={handleFormSubmit}
               variant='contained' 
               startIcon={<LoginIcon/>}
               color='primary' 
               size='large' 
-              style={{fontSize: 14}}
               value='/LoginForm'
               >Login</Button>
+              <Snackbar
+                open={open}
+                autoHideDuration={6000}
+                onClose={handleClose}
+                message="Could not Login (check User or Password)"
+                action={action}
+              />
               </Link>
           </div>
       </FormGroup>

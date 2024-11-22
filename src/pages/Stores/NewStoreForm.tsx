@@ -4,7 +4,7 @@ import StoreBasicData from '../../components/Stores/StoreBasicData'
 import useNewStoreForm from '../../components/Stores/useNewStoreForm'
 import Button from '@mui/material/Button'
 import { FormControl, Box } from '@mui/material'
-
+import { defaultTopBox } from '../../components/Utils/Styles.js';
 interface StoreForm {
   Store: number;
   Status: number;
@@ -50,7 +50,7 @@ const NewStoreForm = () => {
 
   return (
       <FormControl sx={{ m: 1, minWidth: 120 }}   variant='standard'>
-        <Box  sx={{borderRadius:3 , backgroundColor: 'black', color: 'white', minWidth: '550px', margin: 'auto', marginTop: '10px', padding: '30px'}} maxWidth='sm' >
+        <Box  sx={defaultTopBox} maxWidth='sm' >
           <h2 className="label">Fill the fields to create a new Home Step {stage+1} of 6</h2>
         </Box>
         {stage === 0 && <StoreBasicData storeForm={storeValues}/>}
@@ -59,19 +59,16 @@ const NewStoreForm = () => {
                         variant='contained' 
                         color='secondary'                         
                         size='large' 
-                        style={{fontSize: 14}} 
                         onClick={() => setStage(stage - 1)}>Previous</Button>}
              {stage < 5 && <Button 
                         variant='contained' 
                         color='primary'                         
                         size='large' 
-                        style={{fontSize: 14}} 
                         onClick={() => setStage(stage + 1)}>Next</Button>}
               {stage === 5 && <Button 
                         variant='contained' 
                         color='primary'                         
                         size='large' 
-                        style={{fontSize: 14}}  
                         onClick={handleFormSubmit}>Finish and Send</Button>}
       </FormControl>
   )

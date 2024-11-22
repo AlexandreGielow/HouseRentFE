@@ -2,13 +2,13 @@ import React from 'react'
 import useNewOrderForm from '../Orders/useNewOrderForm'
 import '../../App.css'
 import { TextField, Box ,Select, MenuItem, FormLabel, FormGroup}  from '@mui/material'
-
+import { defaultBox } from '../../components/Utils/Styles.js';
 
 const OrderFormBasic = () => {
   const { handleChangeBasic, basicData } = useNewOrderForm()
 
   return (
-        <Box className="container" sx={{background: 'black', display: 'flex', minWidth: '550px', flexDirection: 'column', justifyContent: 'center' ,borderRadius:3}}> 
+        <Box className="container" sx={defaultBox}> 
             <h2 className="label">Inform some basic data</h2>
         <FormGroup>
             <FormLabel sx={{color:'white'}}>Store to Deliver</FormLabel>

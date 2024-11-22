@@ -2,13 +2,13 @@ import React from 'react'
 import useNewProductForm from './useNewProductForm'
 import '../../App.css'
 import { TextField, Box, RadioGroup, FormLabel, FormGroup, FormControlLabel, Radio } from '@mui/material'
-
+import { defaultBox } from '../../components/Utils/Styles.js';
 const NewProductFormBasic = ({ productForm }) => {
     const { handleChange, values } = useNewProductForm(
         productForm
     )
     return (
-        <Box className="container" sx={{ background: 'black', display: 'flex',  minWidth: '550px', flexDirection: 'column', justifyContent: 'center', borderRadius: 3 }}>
+        <Box className="container" sx={defaultBox}>
             <FormGroup>
                 <FormLabel sx={{ color: 'white' }}>Product Name</FormLabel>
                 <TextField

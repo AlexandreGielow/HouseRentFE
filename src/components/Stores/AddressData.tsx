@@ -1,5 +1,6 @@
 import useNewHomeForm from './useNewStoreForm'
 import { TextField, Box, FormLabel, FormGroup }  from '@mui/material'
+import { defaultBox } from '../../components/Utils/Styles.js';
 interface AddressForm {
     Name: string;
     PostalCode: string;
@@ -17,7 +18,7 @@ const NewHomeFormAddress = ({addressForm}:{addressForm: AddressForm }) => {
   )
 
   return (
-    <Box className="container" sx={ {background: 'black', display: 'flex',minWidth: '550px', flexDirection: 'column',justifyContent: 'center' ,borderRadius:3} }>
+    <Box className="container" sx={ defaultBox }>
         <FormGroup>
             <FormLabel sx={{color:'white'}}>Postal Code</FormLabel>
             <TextField

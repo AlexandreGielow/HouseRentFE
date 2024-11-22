@@ -1,20 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import './CardItem.css'
 import './Cards.css'
-import { Box, Paper } from '@mui/material'
+import { Box } from '@mui/material'
 import Grid from '@mui/material/Grid2'
-import { styled } from '@mui/material/styles';
+
 
 function CardItem (props) {
   const [houseType, setHouseType] = useState('')
-
-  const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  }));
 
 
   useEffect(() => {

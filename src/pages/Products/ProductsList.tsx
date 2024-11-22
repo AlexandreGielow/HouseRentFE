@@ -2,7 +2,7 @@ import React from 'react'
 import { FormControl, Box ,Button,TextField,FormGroup} from '@mui/material'
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import useProductsList from '../../components/Products/useProductsList'
-
+import { defaultTopBox } from '../../components/Utils/Styles.js';
 
 
 const ProductsListForm = () => {
@@ -41,7 +41,7 @@ const ProductsListForm = () => {
 
   return (
       <FormControl sx={{ m: 1, minWidth: 120 }}   variant='standard'>        
-        <Box  sx={{borderRadius:3 , backgroundColor: 'black', color: 'white',  minWidth: '600px', margin: 'auto', marginTop: '10px', padding: '30px'}} maxWidth='sm' >
+        <Box  sx={defaultTopBox} maxWidth='sm' >
           <h2 className="label">Products registered</h2>
           <FormGroup>
           <TextField
@@ -57,7 +57,7 @@ const ProductsListForm = () => {
           />
           </FormGroup>
         </Box> 
-        <Box  sx={{borderRadius:3 , backgroundColor: 'black', color: 'white',  minWidth: '550px', margin: 'auto', marginTop: '10px', padding: '30px'}} maxWidth='sm' >
+        <Box  sx={defaultTopBox} maxWidth='sm' >
             <DataGrid
               rows={products}
               columns={columns}
@@ -77,7 +77,6 @@ const ProductsListForm = () => {
         variant='contained' 
         color='primary'                         
         size='large' 
-        style={{fontSize: 14}}  
         onClick={getProductList}>Get all products</Button>        
       </FormControl>
   )

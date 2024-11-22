@@ -3,11 +3,12 @@ import { TextField, Box, FormLabel, FormGroup,FormControl }  from '@mui/material
 import Button from '@mui/material/Button'
 import LoginIcon from '@mui/icons-material/LockOpen'
 import useSubmitForm from '../../components/LoginRegister/useSubmitForm'
+import { defaultBox } from '../../components/Utils/Styles.js';
 
 const SignUpForm = () => {
   const { handleChange, handleFormSubmit,values} = useSubmitForm()
   return (
-    <Box className="container" sx={ {background: 'black', display: 'flex',minWidth: '550px', flexDirection: 'column',justifyContent: 'center' ,borderRadius:3} }>
+    <Box className="container" sx={ defaultBox }>
         <FormControl sx={{ m: 1, minWidth: 120, 'background-color': 'black'}} margin='normal'  variant="filled">
                 <FormGroup>
                         <FormLabel sx={{color:'white'}}>Postal Code</FormLabel>
@@ -56,7 +57,6 @@ const SignUpForm = () => {
                                 startIcon={<LoginIcon/>}
                                 color='primary'                         
                                 size='large'
-                                style={{fontSize: 14}}
                                 value='/SubmitForm'
                         >Finish and Send</Button>
                 </FormGroup>
