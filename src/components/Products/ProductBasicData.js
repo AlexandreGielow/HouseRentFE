@@ -1,4 +1,3 @@
-import React from 'react'
 import useNewProductForm from './useNewProductForm'
 import '../../App.css'
 import { TextField, Box, RadioGroup, FormLabel, FormGroup, FormControlLabel, Radio } from '@mui/material'

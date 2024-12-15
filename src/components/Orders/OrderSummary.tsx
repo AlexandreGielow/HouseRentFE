@@ -1,42 +1,30 @@
-import React from 'react'
-import useNewOrderForm from '../Orders/useNewOrderForm'
+
+import useNewOrderForm  from '../Orders/useNewOrderForm'
 import '../../App.css'
 import { Box ,Select, MenuItem, FormLabel, FormGroup}  from '@mui/material'
-import { DataGrid } from '@mui/x-data-grid';
+import { DataGrid ,GridColDef} from '@mui/x-data-grid';
 import { defaultBox } from '../../components/Utils/Styles.js';
 
-const NewHomeFormBasic = () => {
-  const {values} = useNewOrderForm()
 
-  const columns = [
-    {
-      field: 'item',
-      headerName: 'Item',
-      width: 200,
-      editable: true,
-    },
-    {
-      field: 'quantity',
-      headerName: 'Quantity',
-      type: 'number',
-      width: 110,
-      editable: true,
-    }
-  ];
+const NewHomeFormBasic = () => {
+  const {basicData,products,orderItems} = useNewOrderForm()
+
+  const columns: GridColDef<(typeof products)[number]>[] = [
+    { field: 'id', headerName: 'ID', width: 50 },
+    { field: 'name', headerName: 'Product', width: 250 },
+    { field: 'quantity', headerName: 'Qt', width: 50 },
+    { field: 'value', headerName: 'Vl', width: 50 },
+    { field: 'unitOfMesure', headerName: 'U.M.', width: 50 }]
   
-  const rows = [
-    { id: 1, item: 'Coffee Beans 1Kg Medium Roast', quantity: 1 },
-    { id: 2, item: 'Cookie', quantity: 2},
-  ];
   return (
         <Box className="container" sx={defaultBox}> 
         <FormGroup>      
         <FormLabel sx={{color:'white'}}>Store selected to Deliver</FormLabel>
             <Select 
                 defaultValue={0}
-                disabled='true'
+                disabled={true}
                 label='Type'
-                value={values.Store} 
+                value={basicData.Store} 
                 sx={{marginBottom:'10px', marginTop:'1px'}}>
                     <MenuItem value = {0}>Bloor & Younge</MenuItem>
                     <MenuItem value = {1}>Dundas</MenuItem>
@@ -46,15 +34,15 @@ const NewHomeFormBasic = () => {
             <Select 
                 defaultValue={0}
                 label='Type'
-                disabled='true'
-                value={values.ShippingType} 
+                disabled={true}
+                value={basicData.ShippingType} 
                 sx={{marginBottom:'10px', marginTop:'1px'}}>
                     <MenuItem value = {0}>Standard</MenuItem>
                     <MenuItem value = {1}>Express</MenuItem>
                     <MenuItem value = {2}>ByHand</MenuItem>
             </Select>  
             <DataGrid
-                rows={rows}
+                rows={orderItems}
                 columns={columns}
                 initialState={{
                 pagination: {

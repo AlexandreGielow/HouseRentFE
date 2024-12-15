@@ -6,7 +6,7 @@ import { DataGrid,GridColDef } from '@mui/x-data-grid';
 import { defaultBox } from '../../components/Utils/Styles.js';
 
 const OrderItems = () => {
-  const {products ,FetchProducts,currentProduct,handleChangeProduct} = useNewOrderForm()
+  const {products ,FetchProducts,currentProduct,handleChangeProduct,orderItems,handleChangeOrderItems} = useNewOrderForm()
   const columns: GridColDef<(typeof products)[number]>[] = [
     { field: 'id', headerName: 'ID', width: 50 },
     { field: 'name', headerName: 'Product', width: 250 },
@@ -22,7 +22,8 @@ const OrderItems = () => {
         <FormGroup>               
             <FormLabel sx={{color:'white'}}>Item</FormLabel>
             <Select 
-                defaultValue={0}
+                name='id'
+                type='number'
                 label='Type'
                 value={currentProduct.id} 
                 onChange={handleChangeProduct}>
@@ -30,19 +31,20 @@ const OrderItems = () => {
             </Select>
             <FormLabel sx={{color:'white'}}>Quantity</FormLabel>
             <TextField
+                name='quantity'
                 type='number'
                 placeholder='0'
                 variant='standard'
-                value={currentProduct.value} 
+                value={currentProduct.quantity} 
                 onChange={handleChangeProduct}/>                       
             </FormGroup>  
             <Button 
                         variant='contained' 
                         color='primary'                         
                         size='large' 
-                        onClick={handleChangeProduct}>Add Item</Button>  
+                        onClick={handleChangeOrderItems}>Add Item</Button>  
             <DataGrid
-                rows={products}
+                rows={orderItems}
                 columns={columns}
                 initialState={{
                 pagination: {

@@ -9,15 +9,8 @@ const useNewOrderForm = () => {
     ShippingType: number;
     ExpectedDeliveryDate: Date;
   }
-  interface Product {
-    id: number;
-    name: string;
-    description: string;
-    status: number;
-    value: number;
-    unitOfMesure: string;
-  }
 
+  //basic form 
   const [basicData, setBasicData] = useState<OrderSubmitForm>({
     Store: 0,
     Status: 0,
@@ -31,16 +24,35 @@ const useNewOrderForm = () => {
       [event.target.name]: event.target.value
     })
   }
-  const [products, setProducts] = useState<Product[]>([])
-  interface FormEvent {
-    preventDefault: () => void;
+
+  //products
+  interface Product {
+    id: number;
+    name: string;
+    description: string;
+    status: number;
+    quantity: number;
+    value: number;
+    unitOfMesure: string;
   }
-  const [currentProduct,setCurrentProduct] = useState<Product>({ id: 1, name: 'Loading', description: 'Loading', status: 0, value: 1, unitOfMesure: 'Loading' })  
+  const [products, setProducts] = useState<Product[]>([])
+
+
+  const [currentProduct,setCurrentProduct] = useState<Product>({ 
+    id: 0, 
+    name: '', 
+    description: '', 
+    status: 0, 
+    value: 0, 
+    unitOfMesure: '', 
+    quantity: 0 
+  })  
   const handleChangeProduct = (event: React.ChangeEvent<HTMLInputElement>| any) => {
     setCurrentProduct({
       ...currentProduct,
       [event.target.name]: event.target.value
-    })
+    });
+    console.log(currentProduct);
   }
 
   const FetchProducts = () => {
@@ -55,7 +67,6 @@ const useNewOrderForm = () => {
           'Content-Type': 'application/json'
         })
       }
-      console.log('chamando resultado')
       const getProducts = async () => {
         var response = await fetch('https://localhost:7023/api/v1/Products', requestOptions)         
         const json = await response.json()
@@ -68,16 +79,27 @@ const useNewOrderForm = () => {
     ))
   }
 
-  //const addProduct = (product: Product) => {  }
+  //order items
+  const [orderItems, setOrderItems] = useState<Product[]>([])
+  interface FormEvent {
+    preventDefault: () => void;
+  }
+  const handleChangeOrderItems = () => {
+    setOrderItems([
+      ...orderItems,
+      currentProduct
+    ])
+  }
 
 
+  //general form submit
   const handleFormSubmit = (event: FormEvent) => {
     event.preventDefault()
     //aqui vai o código para enviar o formulário para o backend
     console.log('Form submitted')
   }
 
-  return { handleChangeBasic,handleFormSubmit, basicData, FetchProducts,products,currentProduct,setCurrentProduct,handleChangeProduct }
+  return { handleChangeBasic,handleFormSubmit, basicData, FetchProducts,products,currentProduct,setCurrentProduct,handleChangeProduct,orderItems,handleChangeOrderItems }
 }
 
 export default useNewOrderForm
