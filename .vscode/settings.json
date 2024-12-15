@@ -1,0 +1,15 @@
+{
+    "git.autofetch": true,
+    "dart.flutterSdkPath": "C:\\Users\\Alex_\\Downloads\\flutter",
+    "dart.openDevTools": "flutter",
+    "git.enableSmartCommit": true,
+    "diffEditor.renderSideBySide": false,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "files.associations": {
+        "*.tsx": "typescriptreact"
+    },
+    "[typescriptreact]": {
+        
+    }
+}

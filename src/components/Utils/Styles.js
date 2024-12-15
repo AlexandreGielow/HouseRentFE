@@ -1,0 +1,2 @@
+export const defaultBox = {background: 'black', display: 'flex',  minWidth: '600px',flexDirection: 'column', justifyContent: 'center' ,borderRadius:3, marginBottom: '10px'}
+export const defaultTopBox = {borderRadius:3 , backgroundColor: 'black', color: 'white', minWidth: '600pxpx', margin: 'auto', marginTop: '10px', padding: '30px'}
